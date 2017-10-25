@@ -1,5 +1,8 @@
 {
   "name": "office",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "flatpickr": "^3.0.7",
+    "select2": "^4.0.3"
+  }
 }

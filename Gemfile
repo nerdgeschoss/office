@@ -28,6 +28,7 @@ gem "countries"
 gem "pundit", github: "elabs/pundit", branch: "master"
 gem "search_cop"
 gem "document_serializable", "~> 0.2", git: "https://github.com/nerdgeschoss/document_serializable.git"
+gem "devise"
 
 # Seed Data
 gem "database_cleaner"

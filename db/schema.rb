@@ -10,9 +10,108 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
-
+ActiveRecord::Schema.define(version: 20171025130418) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pgcrypto"
 
+  create_table "devices", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.string "mac_address"
+    t.string "name"
+    t.string "user_agent"
+    t.datetime "last_activity_at", default: "2017-10-25 13:27:57", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "invoice_lines", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "product_id", null: false
+    t.decimal "price", null: false
+    t.decimal "vat", null: false
+    t.decimal "vat_rate", null: false
+    t.uuid "ordered_by_id"
+    t.uuid "invoice_id", null: false
+    t.integer "quantity", default: 1, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["invoice_id"], name: "index_invoice_lines_on_invoice_id"
+  end
+
+  create_table "invoices", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "team_id", null: false
+    t.datetime "invoiced_at"
+    t.decimal "total", null: false
+    t.decimal "vat", null: false
+    t.decimal "total_brut", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["invoiced_at"], name: "index_invoices_on_invoiced_at"
+  end
+
+  create_table "payments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "team_id", null: false
+    t.decimal "amount", null: false
+    t.string "subject"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "products", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", null: false
+    t.string "slug", null: false
+    t.boolean "available_in_kiosk", default: false, null: false
+    t.decimal "price", null: false
+    t.decimal "vat", null: false
+    t.decimal "vat_rate", null: false
+    t.boolean "deprecated", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["available_in_kiosk"], name: "index_products_on_available_in_kiosk"
+    t.index ["deprecated"], name: "index_products_on_deprecated"
+    t.index ["slug"], name: "index_products_on_slug", unique: true
+  end
+
+  create_table "subscriptions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "product_id", null: false
+    t.uuid "team_id", null: false
+    t.datetime "canceled_at"
+    t.integer "interval", default: 0, null: false
+    t.datetime "next_renewal_at", null: false
+    t.integer "quantity", default: 1, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["canceled_at"], name: "index_subscriptions_on_canceled_at"
+    t.index ["next_renewal_at"], name: "index_subscriptions_on_next_renewal_at"
+  end
+
+  create_table "teams", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", null: false
+    t.jsonb "billing_address"
+    t.string "slug", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_teams_on_slug", unique: true
+  end
+
+  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "slug", null: false
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "email", null: false
+    t.uuid "team_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_users_on_slug", unique: true
+  end
+
+  add_foreign_key "devices", "users"
+  add_foreign_key "invoice_lines", "invoices"
+  add_foreign_key "invoice_lines", "products"
+  add_foreign_key "invoice_lines", "users", column: "ordered_by_id"
+  add_foreign_key "invoices", "teams"
+  add_foreign_key "payments", "teams"
+  add_foreign_key "subscriptions", "products"
+  add_foreign_key "subscriptions", "teams"
+  add_foreign_key "users", "teams"
 end
