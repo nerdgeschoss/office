@@ -1,0 +1,14 @@
+[ignore]
+
+[include]
+
+[libs]
+node_modules/iflow-jquery/index.js.flow
+
+[lints]
+all=warn
+
+[options]
+unsafe.enable_getters_and_setters=true
+emoji=true
+include_warnings=true
