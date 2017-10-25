@@ -1,0 +1,14 @@
+doctype html
+html
+  = render "layouts/head"
+  body class=("test" if Rails.env.test?) lang=I18n.locale
+    - @page_modals&.values&.each do |modal|
+      == modal
+    .workspace
+      input.workspace__menu-switch#menu type="checkbox"
+      .workspace__menu
+        .Menu = render "components/menu"
+        .workspace__menu__trigger
+      .workspace-content
+        = render "components/navbar"
+        = yield

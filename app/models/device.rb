@@ -7,7 +7,7 @@
 #  mac_address      :string
 #  name             :string
 #  user_agent       :string
-#  last_activity_at :datetime         default(Wed, 25 Oct 2017 12:54:46 UTC +00:00), not null
+#  last_activity_at :datetime         default(Wed, 25 Oct 2017 13:10:45 UTC +00:00), not null
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #

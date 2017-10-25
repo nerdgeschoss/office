@@ -9,7 +9,7 @@
 #  price              :decimal(, )      not null
 #  vat                :decimal(, )      not null
 #  vat_rate           :decimal(, )      not null
-#  deprecated         :boolean          not null
+#  deprecated         :boolean          default(FALSE), not null
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #

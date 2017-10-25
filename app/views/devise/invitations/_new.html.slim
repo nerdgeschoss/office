@@ -1,0 +1,6 @@
+= awesome_form_with model: @user, url: user_invitation_path, method: :post, local: true do |f|
+  = f.text_field :first_name
+  = f.text_field :last_name
+  - @user.class.invite_key_fields.each do |field|
+    = f.text_field field
+  = f.submit_line

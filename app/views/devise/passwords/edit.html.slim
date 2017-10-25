@@ -1,0 +1,7 @@
+= awesome_form_with model: resource, url: user_password_path, method: :put, local: true do |f|
+  = f.hidden_field :reset_password_token
+  = f.password_field :password, icon: :lock
+  = f.password_field :password_confirmation, icon: :lock
+  = f.submit t(".change_and_log_in"), class: "--fill"
+= render "devise/shared/links"
+
