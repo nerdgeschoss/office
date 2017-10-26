@@ -1,0 +1,4 @@
+:schedule:
+  perform_subscriptions:
+    every: "1m"
+    class: PerformSubscriptionsJob
