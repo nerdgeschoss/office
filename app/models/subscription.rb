@@ -18,6 +18,7 @@ class Subscription < ApplicationRecord
   belongs_to :team
 
   scope :active, -> { where(canceled_at: nil) }
+  scope :due, -> { active.where("subscriptions.next_renewal_at < NOW()") }
 
   enum interval: { monthly: 0 }
 
@@ -29,5 +30,17 @@ class Subscription < ApplicationRecord
 
   def canceled?
     !active?
+  end
+
+  def due?
+    !canceled? && next_renewal_at < DateTime.current
+  end
+
+  def perform!
+    return unless due?
+    transaction do
+      team.open_invoice.lines.create! product_id: product_id, quantity: quantity, created_at: next_renewal_at
+      update! next_renewal_at: next_renewal_at + 1.month
+    end
   end
 end
