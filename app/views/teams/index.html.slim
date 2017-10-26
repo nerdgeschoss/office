@@ -1,5 +1,11 @@
+- @team ||= Team.new
+= modal id: :add, show: @team.errors.any?
+  = card :create_team
+    = awesome_form_for @team do |f|
+      = f.text_field :name
+      = f.submit_line
 .container
-  = card :teams, variant: :table
+  = card :teams, variant: :table, actions:[add_if(:add, policy(Team).create?)]
     .table
       .table__head
         .table__row

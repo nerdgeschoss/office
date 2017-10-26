@@ -1,0 +1,22 @@
+- modal id: :edit_user, show: @user.errors.any?
+  = card :edit_user
+    = awesome_form_for @user do |f|
+      = f.text_field :first_name
+      = f.text_field :last_name
+      = f.text_field :email
+      = f.submit_line
+= header @user.name, components: [ mail_to(@user.email), edit_if(:edit_user, policy(@user).update?) ]
+.container
+  = card :devices, variant: :table
+    .table
+      .table__head
+        .table__row
+          .table__cell.table__cell--wide = Device.human_attribute_name :user_agent
+          .table__cell.table__cell--slim = Device.human_attribute_name :last_activity_at
+          .table__cell.table__cell--slim
+      .table__body
+        - @user.devices.each do |device|
+          .table__row
+            .table__cell.table__cell--wide = device.user_agent
+            .table__cell.table__cell--slim = l device.last_activity_at, format: :short
+            .table__cell.table__cell--slim.right = link_to "logout", device_path(device), method: :delete, class: "button button--link button--primary"

@@ -21,6 +21,8 @@ class Subscription < ApplicationRecord
 
   enum interval: { monthly: 0 }
 
+  validates :product, :team, :interval, :next_renewal_at, :quantity, presence: true
+
   def active?
     canceled_at.nil?
   end

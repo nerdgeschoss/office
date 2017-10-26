@@ -25,9 +25,12 @@ class User < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
 
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :team
+  has_many :devices, dependent: :destroy
+
+  validates :first_name, :last_name, :email, :team_id, presence: true
 
   def name
     [first_name, last_name].join(" ")

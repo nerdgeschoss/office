@@ -1,0 +1,27 @@
+- @user ||= User.new
+- modal id: :create_user, show: @user.errors.any?
+  = card :invite_user
+    = awesome_form_for @user do |f|
+      = f.collection_select :team_id, Team.all, :id, :name
+      = f.text_field :first_name
+      = f.text_field :last_name
+      = f.text_field :email
+      = f.password_field :password
+      = f.password_field :password_confirmation
+      = f.submit_line
+.container
+  = card :users, variant: :table, actions: [add_if(:create_user, policy(@user).create?)]
+    .table
+      .table__head
+        .table__row
+          .table__cell.table__cell--selection
+          .table__cell = User.human_attribute_name :name
+          .table__cell = User.human_attribute_name :email
+      .table__body
+        - @users.each do |user|
+          a.table__row href=user_path(user)
+            .table__cell.table__cell--selection
+            .table__cell
+              div = user.name
+              small.text_muted = user.team.name
+            .table__cell = user.email

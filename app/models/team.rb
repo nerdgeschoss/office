@@ -19,6 +19,8 @@ class Team < ApplicationRecord
   has_many :payments, dependent: :destroy
   has_many :subscriptions, dependent: :destroy
 
+  validates :name, presence: true
+
   def open_invoice
     invoices.open.first_or_create
   end

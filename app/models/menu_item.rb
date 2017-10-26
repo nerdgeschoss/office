@@ -5,7 +5,7 @@ class MenuItemBuilder
   end
 
   def build
-    [dashboard, kiosk, teams, users]
+    [kiosk, teams, users]
   end
 
   private
@@ -21,7 +21,7 @@ class MenuItemBuilder
 
   def kiosk
     # i18n-tasks-use t('menu.items.kiosk')
-    MenuItem.new slug: "kiosk", icon: :ticket, url: path(:root), items: []
+    MenuItem.new slug: "kiosk", icon: :ticket, url: path(:kiosk), items: []
   end
 
   def teams

@@ -1,4 +1,9 @@
-= header @team.name
+- modal id: :edit_team, show: @team.errors.any?
+  = card :edit_team
+    = awesome_form_for @team do |f|
+      = f.text_field :name
+      = f.submit_line
+= header @team.name, components: [edit_if(:edit_team, policy(@team).update?)]
 .container
   = card :members, variant: :table
     .table
@@ -38,7 +43,15 @@
             .table__cell
             .table__cell.table__cell--slim = number_to_currency @team.open_invoice.total
             .table__cell.table__cell--slim
-  = card :subscriptions, variant: :table
+  - @subscription ||= @team.subscriptions.build
+  - modal id: :add_subscription, show: @subscription.errors.any?
+    = card :add_subscription
+      = awesome_form_for [@team, @subscription] do |f|
+        = f.collection_select :product_id, Product.active, :id, :name
+        = f.number_field :quantity, min: 1
+        = f.datetime_field :next_renewal_at
+        = f.submit_line
+  = card :subscriptions, variant: :table, actions: [add_if(:add_subscription, policy(@subscription).create?)]
     .table
       .table__head
         .table__row
@@ -48,7 +61,7 @@
           .table__cell.table__cell--slim = Subscription.human_attribute_name :next_renewal_at
           .table__cell.table__cell--slim = Subscription.human_attribute_name :canceled_at
       .table__body
-        - @team.subscriptions.each do |subscription|
+        - @team.subscriptions.select(&:persisted?).each do |subscription|
           .table__row
             .table__cell = subscription.product.name
             .table__cell.table__cell--slim = subscription.quantity
