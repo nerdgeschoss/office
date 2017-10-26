@@ -24,4 +24,12 @@ class Team < ApplicationRecord
   def open_invoice
     invoices.open.first_or_create
   end
+
+  def invoices_and_payments
+    (invoices.invoiced + payments).select(&:persisted?).sort_by(&:created_at)
+  end
+
+  def balance
+    payments.sum(&:amount) - invoices.sum(&:total)
+  end
 end

@@ -12,7 +12,8 @@ module FormattingHelper
 
   def number_to_accounting(number)
     sign = number.to_f < 0 ? "−" : "+"
-    safe_join [number_to_currency(number.to_f.abs), sign], "\xC2\xA0"
+    content = safe_join [number_to_currency(number.to_f.abs), sign], "\xC2\xA0"
+    tag.div(content, class: "number number--#{sign == '+' ? :positive : :negative}")
   end
 
   def image_data_url(blob)

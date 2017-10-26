@@ -17,6 +17,7 @@
           .table__cell.table__cell--selection
           .table__cell = User.human_attribute_name :name
           .table__cell = User.human_attribute_name :email
+          .table__cell = User.human_attribute_name :last_activity_at
       .table__body
         - @users.each do |user|
           a.table__row href=user_path(user)
@@ -25,3 +26,6 @@
               div = user.name
               small.text_muted = user.team.name
             .table__cell = user.email
+            .table__cell
+              - if user.last_activity_at
+                = timeago_tag user.last_activity_at

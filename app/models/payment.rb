@@ -12,4 +12,10 @@
 
 class Payment < ApplicationRecord
   belongs_to :team
+
+  validates :amount, presence: true
+
+  def accounting_amount
+    amount
+  end
 end

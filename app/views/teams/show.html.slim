@@ -19,7 +19,7 @@
             .table__cell = user.name
             .table__cell = user.email
   - if @team.open_invoice.lines.any?
-    = card :open_invoice, variant: :table, actions: [link_to(t(".close_invoice"), invoice_path(@team.open_invoice), method: :patch)]
+    = card :open_invoice, variant: :table
       .table
         .table__head
           .table__row
@@ -35,14 +35,14 @@
               .table__cell.table__cell--slim = line.quantity
               .table__cell = line.user&.name || "-"
               .table__cell.table__cell--slim = number_to_currency line.price
-              .table__cell.table__cell--slim = l line.created_at, format: :short
+              .table__cell.table__cell--slim = timeago_tag line.created_at
         .table_footer
           .table__row
             .table__cell
             .table__cell.table__cell--slim
             .table__cell
             .table__cell.table__cell--slim = number_to_currency @team.open_invoice.total
-            .table__cell.table__cell--slim
+            .table__cell.table__cell--slim = link_to t(".close_invoice"), invoice_path(@team.open_invoice), method: :patch, class: "button button--link"
   - @subscription ||= @team.subscriptions.build
   - modal id: :add_subscription, show: @subscription.errors.any?
     = card :add_subscription
@@ -70,17 +70,33 @@
             .table__cell.table__cell--slim
               - if subscription.canceled?
                 = l subscription.canceled_at, format: :short
-  - if @team.invoices.invoiced.any?
-    = card :invoices, variant: :table
-      .table
-        .table__head
+  - @payment ||= @team.payments.new
+  - modal id: :add_payment, show: @payment.errors.any?
+    = card :add_payment
+      = awesome_form_for [@team, @payment] do |f|
+        = f.text_field :amount
+        = f.text_field :subject
+        = f.submit_line
+  = card :invoices, variant: :table
+    .table
+      .table__head
+        .table__row
+          .table__cell = Invoice.model_name.human
+          .table__cell.table__cell--slim = Invoice.human_attribute_name :total
+          .table__cell.table__cell--slim = Team.human_attribute_name :balance
+          .table__cell.table__cell--slim = Invoice.human_attribute_name :invoiced_at
+      .table__body
+        - balance = 0
+        - @team.invoices_and_payments.each do |doc|
+          - balance += doc.accounting_amount
           .table__row
-            .table__cell = Invoice.model_name.human
-            .table__cell.table__cell--slim = Invoice.human_attribute_name :total
-            .table__cell.table__cell--slim = Invoice.human_attribute_name :invoiced_at
-        .table__body
-          - @team.invoices.invoiced.each do |invoice|
-            .table__row
-              .table__cell = invoice.id
-              .table__cell.table__cell--slim = number_to_currency invoice.total
-              .table__cell.table__cell--slim = l invoice.invoiced_at.to_date, format: :short
+            .table__cell = doc.is_a?(Payment) ? doc.subject : doc.id
+            .table__cell.table__cell--slim = number_to_accounting doc.accounting_amount
+            .table__cell.table__cell--slim = number_to_accounting balance
+            .table__cell.table__cell--slim = l doc.created_at.to_date, format: :short
+      .table__foot
+        .table__row
+          .table__cell
+          .table__cell.table__cell--slim
+          .table__cell.table__cell--slim = number_to_accounting balance
+          .table__cell.table__cell--slim: label.button.button--link for=:add_payment = t(".add_payment")

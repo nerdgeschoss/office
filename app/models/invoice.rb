@@ -33,4 +33,8 @@ class Invoice < ApplicationRecord
     return if invoiced?
     update! invoiced_at: DateTime.current
   end
+
+  def accounting_amount
+    -total
+  end
 end

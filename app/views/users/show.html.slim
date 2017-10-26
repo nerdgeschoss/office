@@ -18,5 +18,5 @@
         - @user.devices.each do |device|
           .table__row
             .table__cell.table__cell--wide = device.user_agent
-            .table__cell.table__cell--slim = l device.last_activity_at, format: :short
+            .table__cell.table__cell--slim = timeago_tag device.last_activity_at
             .table__cell.table__cell--slim.right = link_to "logout", device_path(device), method: :delete, class: "button button--link button--primary"

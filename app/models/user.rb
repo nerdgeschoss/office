@@ -44,4 +44,8 @@ class User < ApplicationRecord
     hash = Digest::MD5.hexdigest(email.to_s.downcase)
     "https://www.gravatar.com/avatar/#{hash}?d=mm&s=#{size}"
   end
+
+  def last_activity_at
+    devices.maximum(:last_activity_at)
+  end
 end
