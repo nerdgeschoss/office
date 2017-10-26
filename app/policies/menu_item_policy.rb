@@ -11,6 +11,10 @@ class MenuItemPolicy < ApplicationPolicy
     true
   end
 
+  def products?
+    admin?
+  end
+
   def teams?
     admin?
   end

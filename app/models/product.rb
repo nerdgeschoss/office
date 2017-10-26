@@ -22,4 +22,6 @@ class Product < ApplicationRecord
   scope :active, -> { where(deprecated: false) }
 
   has_many :invoice_lines, dependent: :destroy
+
+  validates :name, :price, :vat, :vat_rate, presence: true
 end

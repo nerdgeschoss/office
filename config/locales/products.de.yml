@@ -1,0 +1,7 @@
+---
+de:
+  products:
+    index:
+      create_product: Produkt anlegen
+    show:
+      edit_product: Produkt bearbeiten

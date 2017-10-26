@@ -1,0 +1,5 @@
+- title @product.name
+- modal id: :edit_product, show: @product.errors.any?
+  = card :edit_product
+    = render "products/form"
+= header @product.name, components: [number_to_currency(@product.price), edit_if(:edit_product, policy(@product).update?)]

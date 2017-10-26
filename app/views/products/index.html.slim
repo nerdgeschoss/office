@@ -1,0 +1,19 @@
+- title Product.model_name.human count: 2
+- @product ||= Product.new
+= modal id: :add, show: @product.errors.any?
+  = card :create_product
+    = render "products/form"
+.container
+  = card Product.model_name.human(count: 2), variant: :table, actions:[add_if(:add, policy(Product).create?)]
+    .table
+      .table__head
+        .table__row
+          .table__cell.table__cell--selection
+          .table__cell = Product.human_attribute_name :name
+          .table__cell = Product.human_attribute_name :price
+      .table__body
+        - @products.each do |product|
+          a.table__row href=product_path(product)
+            .table__cell.table__cell--selection
+            .table__cell = product.name
+            .table__cell = number_to_currency product.price

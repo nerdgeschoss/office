@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :invoices
   resources :users
   resources :devices
+  resources :products
   resource :kiosk
   root "kiosks#show"
 end

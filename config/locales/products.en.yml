@@ -1,0 +1,7 @@
+---
+en:
+  products:
+    index:
+      create_product: Create product
+    show:
+      edit_product: Edit product

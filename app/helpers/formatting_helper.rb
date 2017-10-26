@@ -10,6 +10,10 @@ module FormattingHelper
       .join " - "
   end
 
+  def number_to_currency(number, options = {})
+    super number, options.reverse_merge(unit: "€")
+  end
+
   def number_to_accounting(number)
     sign = number.to_f < 0 ? "−" : "+"
     content = safe_join [number_to_currency(number.to_f.abs), sign], "\xC2\xA0"
