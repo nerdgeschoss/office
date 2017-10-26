@@ -1,3 +1,2 @@
 class DevicePolicy < ApplicationPolicy
-
 end

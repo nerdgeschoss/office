@@ -1,3 +1,2 @@
 class SubscriptionPolicy < ApplicationPolicy
-
 end
