@@ -1,0 +1,13 @@
+---
+en:
+  activerecord:
+    attributes:
+      subscription:
+        canceled_at: Canceled at
+        interval: Interval
+        next_renewal_at: Next renewal at
+        quantity: Quantity
+    models:
+      subscription:
+        one: Subscription
+        other: Subscriptions

@@ -39,3 +39,6 @@ stages:
       - type: shell
         name: Run Tests
         command: bundle exec rspec --format documentation
+      - type: shell
+        name: Check Translations
+        command: bundle exec i18n-tasks health

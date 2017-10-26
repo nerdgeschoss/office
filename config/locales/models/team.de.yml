@@ -1,0 +1,11 @@
+---
+de:
+  activerecord:
+    attributes:
+      team:
+        balance: Kontostand
+        name: Name
+    models:
+      team:
+        one: Team
+        other: Teams

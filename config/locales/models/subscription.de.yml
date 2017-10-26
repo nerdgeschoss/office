@@ -1,0 +1,13 @@
+---
+de:
+  activerecord:
+    attributes:
+      subscription:
+        canceled_at: beendet am
+        interval: Interval
+        next_renewal_at: nächste Verlängerung am
+        quantity: Menge
+    models:
+      subscription:
+        one: Abo
+        other: Abos

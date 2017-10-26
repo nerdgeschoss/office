@@ -1,0 +1,11 @@
+---
+en:
+  activerecord:
+    attributes:
+      invoice:
+        invoiced_at: Invoiced at
+        total: Total
+    models:
+      invoice:
+        one: Invoice
+        other: Invoices

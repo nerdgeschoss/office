@@ -1,0 +1,9 @@
+---
+de:
+  users:
+    index:
+      invite_user: Nutzer einladen
+      users: Nutzer
+    show:
+      devices: Geräte
+      edit_user: Nutzer bearbeiten

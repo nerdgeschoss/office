@@ -1,0 +1,11 @@
+---
+de:
+  activerecord:
+    attributes:
+      invoice:
+        invoiced_at: Rechnungsdatum
+        total: Gesamt
+    models:
+      invoice:
+        one: Rechnung
+        other: Rechnungen

@@ -1,0 +1,7 @@
+---
+de:
+  activerecord:
+    models:
+      application_record:
+        one: One
+        other: Other

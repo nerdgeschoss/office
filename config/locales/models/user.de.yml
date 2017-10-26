@@ -1,0 +1,12 @@
+---
+de:
+  activerecord:
+    attributes:
+      user:
+        email: Email
+        last_activity_at: zuletzt aktiv
+        name: Name
+    models:
+      user:
+        one: Nutzer
+        other: Nutzer

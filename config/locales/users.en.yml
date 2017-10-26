@@ -1,0 +1,9 @@
+---
+en:
+  users:
+    index:
+      invite_user: Invite user
+      users: Users
+    show:
+      devices: Devices
+      edit_user: Edit user

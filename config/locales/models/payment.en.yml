@@ -1,0 +1,7 @@
+---
+en:
+  activerecord:
+    models:
+      payment:
+        one: Payment
+        other: Payments

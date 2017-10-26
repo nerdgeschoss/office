@@ -1,0 +1,11 @@
+---
+en:
+  activerecord:
+    attributes:
+      product:
+        name: Name
+        price: Price
+    models:
+      product:
+        one: Product
+        other: Products

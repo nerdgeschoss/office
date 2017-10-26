@@ -1,0 +1,8 @@
+---
+en:
+  menu:
+    items:
+      dashboard: Dashboard
+      kiosk: Kiosk
+      teams: Teams
+      users: Users

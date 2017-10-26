@@ -1,0 +1,13 @@
+---
+de:
+  activerecord:
+    attributes:
+      invoice_line:
+        price: Preis
+        purchased_at: gekauft am
+        quantity: Menge
+        user: Nutzer
+    models:
+      invoice_line:
+        one: Rechnungszeile
+        other: Rechnungszeilen

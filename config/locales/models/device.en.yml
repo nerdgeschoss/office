@@ -1,0 +1,11 @@
+---
+en:
+  activerecord:
+    attributes:
+      device:
+        last_activity_at: Last activity at
+        user_agent: User agent
+    models:
+      device:
+        one: Device
+        other: Devices
