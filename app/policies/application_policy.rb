@@ -8,8 +8,24 @@ class ApplicationPolicy
 
   delegate :admin?, to: :user, allow_nil: true
 
-  def scope
-    user.team
+  def show?
+    admin?
+  end
+
+  def edit?
+    update?
+  end
+
+  def update?
+    admin?
+  end
+
+  def destroy?
+    admin?
+  end
+
+  def create?
+    admin?
   end
 
   class Scope
@@ -21,9 +37,10 @@ class ApplicationPolicy
     end
 
     def resolve
-      scope.all
+      return scope.all if admin?
+      scope.none
     end
 
-    delegate :team, to: :role, allow_nil: true
+    delegate :team, :admin?, to: :user, allow_nil: true
   end
 end

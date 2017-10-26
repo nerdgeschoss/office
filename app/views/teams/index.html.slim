@@ -1,0 +1,12 @@
+.container
+  = card :teams, variant: :table
+    .table
+      .table__head
+        .table__row
+          .table__cell.table__cell--selection
+          .table__cell = Team.human_attribute_name :name
+      .table__body
+        - @teams.each do |team|
+          a.table__row href=team_path(team)
+            .table__cell.table__cell--selection
+            .table__cell = team.name

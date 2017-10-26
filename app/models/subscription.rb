@@ -20,4 +20,12 @@ class Subscription < ApplicationRecord
   scope :active, -> { where(canceled_at: nil) }
 
   enum interval: { monthly: 0 }
+
+  def active?
+    canceled_at.nil?
+  end
+
+  def canceled?
+    !active?
+  end
 end

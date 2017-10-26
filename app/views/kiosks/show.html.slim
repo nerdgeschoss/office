@@ -1,0 +1,25 @@
+.container
+  = form_with url: kiosk_path, local: true do |f|
+    = card :who_are_you
+      .line.line--left
+        - @users.each do |user|
+          label.center for=user.id
+            = f.radio_button :user_id, user.id, id: user.id, required: true
+            = avatar user
+            div = user.name
+            small = user.team.name
+    = card :kiosk, variant: :table
+      .table
+        .table__head
+          .table__row
+            .table__cell.table__cell--selection
+            .table__cell = Product.human_attribute_name :name
+            .table__cell = Product.human_attribute_name :price
+            .table__cell.table__cell--selection
+        .table__body
+          - @products.each do |product|
+            .table__row
+              .table__cell.table__cell--selection
+              .table__cell = product.name
+              .table__cell = number_to_currency product.price
+              .table__cell.table__cell--selection = f.button t(".buy"), class: "button", value: product.id

@@ -1,0 +1,73 @@
+= header @team.name
+.container
+  = card :members, variant: :table
+    .table
+      .table__head
+        .table__row
+          .table__cell.table__cell--selection
+          .table__cell = User.human_attribute_name :name
+          .table__cell = User.human_attribute_name :email
+      .table__body
+        - @team.users.each do |user|
+          a.table__row href=user_path(user)
+            .table__cell.table__cell--selection
+            .table__cell = user.name
+            .table__cell = user.email
+  - if @team.open_invoice.lines.any?
+    = card :open_invoice, variant: :table, actions: [link_to(t(".close_invoice"), invoice_path(@team.open_invoice), method: :patch)]
+      .table
+        .table__head
+          .table__row
+            .table__cell = Product.model_name.human
+            .table__cell.table__cell--slim = InvoiceLine.human_attribute_name :quantity
+            .table__cell = InvoiceLine.human_attribute_name :user
+            .table__cell.table__cell--slim = InvoiceLine.human_attribute_name :price
+            .table__cell.table__cell--slim = InvoiceLine.human_attribute_name :purchased_at
+        .table__body
+          - @team.open_invoice.lines.each do |line|
+            .table__row
+              .table__cell = line.product.name
+              .table__cell.table__cell--slim = line.quantity
+              .table__cell = line.user&.name || "-"
+              .table__cell.table__cell--slim = number_to_currency line.price
+              .table__cell.table__cell--slim = l line.created_at, format: :short
+        .table_footer
+          .table__row
+            .table__cell
+            .table__cell.table__cell--slim
+            .table__cell
+            .table__cell.table__cell--slim = number_to_currency @team.open_invoice.total
+            .table__cell.table__cell--slim
+  = card :subscriptions, variant: :table
+    .table
+      .table__head
+        .table__row
+          .table__cell = Product.model_name.human
+          .table__cell.table__cell--slim = Subscription.human_attribute_name :quantity
+          .table__cell.table__cell--slim = Subscription.human_attribute_name :interval
+          .table__cell.table__cell--slim = Subscription.human_attribute_name :next_renewal_at
+          .table__cell.table__cell--slim = Subscription.human_attribute_name :canceled_at
+      .table__body
+        - @team.subscriptions.each do |subscription|
+          .table__row
+            .table__cell = subscription.product.name
+            .table__cell.table__cell--slim = subscription.quantity
+            .table__cell.table__cell--slim = subscription.interval
+            .table__cell.table__cell--slim = l subscription.next_renewal_at.to_date, format: :short
+            .table__cell.table__cell--slim
+              - if subscription.canceled?
+                = l subscription.canceled_at, format: :short
+  - if @team.invoices.invoiced.any?
+    = card :invoices, variant: :table
+      .table
+        .table__head
+          .table__row
+            .table__cell = Invoice.model_name.human
+            .table__cell.table__cell--slim = Invoice.human_attribute_name :total
+            .table__cell.table__cell--slim = Invoice.human_attribute_name :invoiced_at
+        .table__body
+          - @team.invoices.invoiced.each do |invoice|
+            .table__row
+              .table__cell = invoice.id
+              .table__cell.table__cell--slim = number_to_currency invoice.total
+              .table__cell.table__cell--slim = l invoice.invoiced_at.to_date, format: :short

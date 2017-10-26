@@ -18,4 +18,8 @@ class Team < ApplicationRecord
   has_many :users, dependent: :destroy
   has_many :payments, dependent: :destroy
   has_many :subscriptions, dependent: :destroy
+
+  def open_invoice
+    invoices.open.first_or_create
+  end
 end

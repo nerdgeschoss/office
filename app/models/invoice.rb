@@ -16,9 +16,21 @@ class Invoice < ApplicationRecord
   belongs_to :team
   has_many :lines, class_name: "InvoiceLine", dependent: :destroy
 
+  scope :open, -> { where(invoiced_at: nil) }
+  scope :invoiced, -> { where.not(invoiced_at: nil) }
+
   before_validation do
-    self.total = lines.to_a.sum(:total)
-    self.vat = lines.to_a.sum(:vat)
+    self.total = lines.sum(&:price)
+    self.vat = lines.sum(&:vat)
     self.total_brut = total + vat
+  end
+
+  def invoiced?
+    invoiced_at.present?
+  end
+
+  def close!
+    return if invoiced?
+    update! invoiced_at: DateTime.current
   end
 end

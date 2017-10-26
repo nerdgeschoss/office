@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :teams
+  resources :invoices
   resources :users
-  root "kiosk#show"
+  resource :kiosk
+  root "kiosks#show"
 end

@@ -18,4 +18,14 @@ class InvoiceLine < ApplicationRecord
   belongs_to :product
   belongs_to :invoice
   belongs_to :user, foreign_key: :ordered_by_id, required: false
+
+  before_validation do
+    self.price ||= product.price
+    self.vat ||= product.vat
+    self.vat_rate ||= product.vat_rate
+  end
+
+  after_save do
+    invoice.save
+  end
 end

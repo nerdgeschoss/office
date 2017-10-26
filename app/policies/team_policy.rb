@@ -1,0 +1,3 @@
+class TeamPolicy < ApplicationPolicy
+
+end
