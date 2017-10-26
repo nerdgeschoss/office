@@ -25,6 +25,14 @@ class InvoiceLine < ApplicationRecord
     self.vat_rate ||= product.vat_rate
   end
 
+  def total
+    price * quantity
+  end
+
+  def vat_total
+    vat * quantity
+  end
+
   after_save do
     invoice.save
   end

@@ -20,8 +20,8 @@ class Invoice < ApplicationRecord
   scope :invoiced, -> { where.not(invoiced_at: nil) }
 
   before_validation do
-    self.total = lines.sum(&:price)
-    self.vat = lines.sum(&:vat)
+    self.total = lines.sum(&:total)
+    self.vat = lines.sum(&:vat_total)
     self.total_brut = total + vat
   end
 
@@ -35,6 +35,6 @@ class Invoice < ApplicationRecord
   end
 
   def accounting_amount
-    -total
+    -(total + vat)
   end
 end

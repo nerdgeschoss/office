@@ -12,4 +12,5 @@ en:
       invoices: Invoices
       members: Members
       open_invoice: Open invoice
+      price_plus_vat: "%{price} + %{vat} VAT"
       subscriptions: Subscriptions
