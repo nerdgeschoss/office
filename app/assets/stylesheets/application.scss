@@ -1,0 +1,10 @@
+//= require flatpickr/dist/flatpickr
+//= require flatpickr/dist/themes/airbnb
+//= require select2/dist/css/select2
+//= require_self
+
+@import 'application/variables';
+@import 'application/mixins';
+@import 'application/normalize';
+@import 'application/typography';
+@import 'application/components/*';

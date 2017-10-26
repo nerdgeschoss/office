@@ -29,6 +29,8 @@ gem "pundit", github: "elabs/pundit", branch: "master"
 gem "search_cop"
 gem "document_serializable", "~> 0.2", git: "https://github.com/nerdgeschoss/document_serializable.git"
 gem "devise"
+gem "http_accept_language"
+gem "nested_form"
 
 # Seed Data
 gem "database_cleaner"
@@ -40,10 +42,11 @@ gem "sass-rails"
 gem "jquery-rails"
 gem "turbolinks"
 gem "autoprefixer-rails"
-gem "webpacker"
+gem "webpacker", require: false
 gem "lodash-rails"
 gem "rails-timeago"
 gem "i18n-tasks"
+gem "coffee-rails"
 
 # Services
 gem "newrelic_rpm"

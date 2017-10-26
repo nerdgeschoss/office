@@ -1,0 +1,47 @@
+.line {
+  display: flex;
+  align-items: top;
+  flex-direction: row;
+  justify-content: space-between;
+
+  > *:not(:empty) {
+    margin-right: 1em;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &--center {
+    align-items: center;
+
+    > * {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  &--left {
+    justify-content: flex-start;
+  }
+
+  &--right {
+    justify-content: flex-end;
+  }
+
+  &--baseline {
+    align-items: baseline;
+  }
+
+  &--margin {
+    margin-bottom: 1em;
+  }
+
+  &--wrap {
+    flex-wrap: wrap;
+
+    > * {
+      margin-bottom: 1em;
+    }
+  }
+}

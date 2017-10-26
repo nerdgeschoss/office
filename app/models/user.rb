@@ -32,4 +32,13 @@ class User < ApplicationRecord
   def name
     [first_name, last_name].join(" ")
   end
+
+  def admin?
+    email.to_s.include? "@nerdgeschoss.de"
+  end
+
+  def avatar_url(size = 80)
+    hash = Digest::MD5.hexdigest(email.to_s.downcase)
+    "https://www.gravatar.com/avatar/#{hash}?d=mm&s=#{size}"
+  end
 end

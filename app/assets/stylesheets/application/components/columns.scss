@@ -1,0 +1,19 @@
+.columns {
+  @media(min-width: $tablet) {
+    display: flex;
+
+    > * {
+      flex: 1 0 0;
+      width: 0;
+      margin-right: 32px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    > .card + div:last-child {
+      padding: 24px;
+    }
+  }
+}

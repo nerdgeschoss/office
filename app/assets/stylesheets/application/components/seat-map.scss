@@ -1,0 +1,148 @@
+$seatmap-height: 500px;
+
+.seat-map {
+  &__-preloader {
+    height: $seatmap-height;
+  }
+
+  &__section {
+    fill: rgba($color-border, 0.1);
+    stroke: $color-border;
+  }
+
+  &__sectionName {
+    font-size: 24px;
+    stroke: none;
+    fill: $color-border;
+    font-family: $font-heading;
+    font-weight: bold;
+  }
+
+  &__debug {
+    fill: transparent;
+    stroke: $color-tint;
+  }
+
+  &__seat {
+    r: 4;
+    fill: #EAEAEA;
+    stroke: #4F4F4F;
+    stroke-dasharray: 1.07, 1; // magic number to get a full circle at 4px radius.
+    stroke-width: 0;
+    transition: fill 0.5s, stroke-width 0.2s;
+
+    cursor: pointer;
+
+    &--selected {
+      stroke-width: 2;
+    }
+
+    &--blocked {
+      fill: #EA3C23;
+    }
+
+    &--available {
+      fill: #6EDAFF;
+    }
+
+    &--cart {
+      fill: #FBCF5F;
+    }
+
+    &--booked {
+      fill: $color-bar;
+    }
+  }
+
+  &__zoom-control {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  &__navigation-control {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    &__line {
+      display: flex;
+      justify-content: center;
+
+      > div + div {
+        margin-left: 4px;
+      }
+    }
+  }
+
+  &__button {
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    appearance: none;
+    background-color: white;
+    width: 30px;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 4px $color-shadow;
+    margin-bottom: 4px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20px;
+
+    &--plus {
+      background-image: asset-url("icons/add.svg");
+    }
+
+    &--minus {
+      background-image: asset-url("icons/minus.svg");
+    }
+
+    &--up {
+      background-image: asset-url("icons/arrow-up.svg");
+    }
+
+    &--right {
+      background-image: asset-url("icons/arrow-right.svg");
+    }
+
+    &--down {
+      background-image: asset-url("icons/arrow-down.svg");
+    }
+
+    &--left {
+      background-image: asset-url("icons/arrow-left.svg");
+    }
+
+    &--home {
+      background-image: asset-url("icons/target.svg");
+    }
+  }
+
+  &__scroll {
+    position: relative;
+    width: 100%;
+    height: $seatmap-height;
+    overflow: hidden;
+
+    > svg {
+      width: 100%;
+      transform-origin: 0 0 0;
+    }
+  }
+
+  &__sidebar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 217px;
+    z-index: 10;
+    pointer-events: none;
+
+    > * {
+      pointer-events: all;
+    }
+  }
+}

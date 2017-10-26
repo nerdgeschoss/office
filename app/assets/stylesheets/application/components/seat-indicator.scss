@@ -1,0 +1,12 @@
+.seat-indicator {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 14px;
+  background-color: $color-ticket-reserved;
+  border-radius: 5px;
+
+  &--blocked {
+    background-color: $color-ticket-blocked;
+  }
+}

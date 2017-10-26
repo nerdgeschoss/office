@@ -1,0 +1,103 @@
+$size-icon: 16px;
+$padding: 6px;
+
+.search-box {
+  position: relative;
+  background-color: #f4f4f4;
+
+  &::before {
+    position: absolute;
+    top: ($size-navbar - 20px - $size-icon) / 2;
+    left: calc(1.5em - #{$size-icon/2});
+    z-index: $z-navbar;
+    display: block;
+    width: $size-icon;
+    height: $size-icon;
+    background-image: asset-url('icons/search.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    content: '';
+  }
+
+  input {
+    position: relative;
+    z-index: $z-navbar;
+    width: 50vw;
+    height: $size-navbar - 20px;
+    max-width: 320px;
+    padding: 0 1em 0 3em;
+    background-color: transparent;
+    border: 1px solid $color-border;
+    border-radius: 5px;
+    outline: none;
+    transition: all .3s;
+    appearance: none;
+
+    + .search-box__results {
+      pointer-events: inherit;
+      opacity: 0;
+      transition: opacity .3s;
+    }
+
+    &:focus {
+      border: none;
+      border-bottom: 1px solid $color-border;
+      border-radius: 0;
+
+      + .search-box__results {
+        pointer-events: inherit;
+        opacity: 1;
+      }
+    }
+  }
+
+  &__results {
+    position: absolute;
+    top: 0;
+    right: -1em;
+    left: -1em;
+    padding: 4em 0 1em;
+
+    background-color: #fff;
+    border: 1px solid $color-border;
+    box-shadow: 0 4px 4px $color-shadow;
+
+    a {
+      display: block;
+      padding-left: 4 * $padding;
+      margin-bottom: $padding;
+      color: #000;
+      text-indent: -$padding;
+
+      &:hover {
+        background-color: #f4f4f4;
+      }
+    }
+
+    .search-preview__item {
+      display: block;
+      padding-left: 4 * $padding;
+      margin-bottom: $padding;
+      color: #000;
+      text-indent: -$padding;
+    }
+
+    .active {
+      background-color: #f4f4f4;
+    }
+
+    &:empty {
+      padding: 3em 0 0;
+    }
+  }
+
+  &__category {
+    display: block;
+    margin-top: 2px;
+    margin-right: 1rem;
+    font-size: .8em;
+    color: $color-text-label;
+    text-align: right;
+  }
+}

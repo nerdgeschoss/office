@@ -1,0 +1,58 @@
+<svg width="10" height="15" viewBox="0 0 10 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:figma="http://www.figma.com/figma/ns">
+<title>arrow right 12.2.3.1 2</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-3343 -21175)" figma:type="canvas">
+<mask id="mask0_alpha" mask-type="alpha">
+<path d="M 2043.5 19249L 3483.5 19249L 3483.5 21649L 2043.5 21649L 2043.5 19249Z" fill="#FFFFFF"/>
+</mask>
+<g id="navbar" mask="url(#mask0_alpha)" figma:type="frame">
+<path d="M 2043.5 19249L 3483.5 19249L 3483.5 21649L 2043.5 21649L 2043.5 19249Z" fill="#F5F5F5"/>
+<g id="activities" figma:type="instance">
+<g id="Teams I am on" figma:type="frame">
+<g id="User Management" figma:type="frame">
+<g id="Rectangle 7" filter="url(#filter0_d)" figma:type="rounded-rectangle">
+<use xlink:href="#path0_fill" transform="translate(2126.5 20644)" fill="#FFFFFF"/>
+</g>
+</g>
+</g>
+<g id="Rectangle 45" filter="url(#filter1_i)" figma:type="rounded-rectangle">
+<use xlink:href="#path1_fill" transform="translate(2126.5 21155)" fill="#FFFFFF"/>
+</g>
+<g id="arrow right 12.2.3.1 2" figma:type="frame">
+<g id="Filled Icons" figma:type="frame">
+<g id="Group" figma:type="frame">
+<g id="Vector" figma:type="vector">
+<use xlink:href="#path2_fill" transform="matrix(-1 -1.22465e-16 1.22465e-16 -1 3352.25 21189.5)" fill="#919191"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<filter id="filter0_d" filterUnits="userSpaceOnUse" x="2123" y="20643" width="1287" height="574" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<desc>type="dropShadow" x="0" y="2" size="3" spread="0" color="0,0,0,0.25" blend="normal"</desc>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 255 0"/>
+<feOffset dx="0" dy="2"/>
+<feGaussianBlur stdDeviation="1.5"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+</filter>
+<filter id="filter1_i" filterUnits="userSpaceOnUse" x="2126" y="21155" width="1281" height="56" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<desc>type="innerShadow" x="0" y="1" size="0" spread="0" color="0.926329,0.926329,0.926329,1" blend="normal"</desc>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 255 0" result="hardAlpha"/>
+<feOffset dx="0" dy="1"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.926329 0 0 0 0 0.926329 0 0 0 0 0.926329 0 0 0 1 0"/>
+<feBlend mode="normal" in2="shape" result="effect1_innerShadow"/>
+</filter>
+<path id="path0_fill" d="M 0 0L 1280 0L 1280 568L 0 568L 0 0Z"/>
+<path id="path1_fill" d="M 0 0L 1280 0L 1280 56L 0 56L 0 0Z"/>
+<path id="path2_fill" d="M 0.583757 14.0003C 0.41809 14.0003 0.25359 13.9303 0.13809 13.7938C -0.07016 13.5482 -0.0392433 13.1802 0.20634 12.9719L 7.26351 7.00033L 0.20634 1.02932C -0.0392433 0.820491 -0.07016 0.452408 0.13809 0.206825C 0.345757 -0.0399253 0.71384 -0.0696753 0.960007 0.137991L 8.54334 6.55466C 8.67459 6.66549 8.74984 6.82883 8.74984 7.00033C 8.74984 7.17183 8.67459 7.33458 8.54334 7.44599L 0.960007 13.8627C 0.85034 13.9548 0.716173 14.0003 0.583757 14.0003Z"/>
+</defs>
+</svg>

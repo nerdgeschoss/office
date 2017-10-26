@@ -1,0 +1,66 @@
+.tabs {
+  justify-content: space-between;
+  max-width: 100vw;
+  margin: 0 0 1em;
+
+  font-size: 13px;
+  background-color: $color-background-tabs;
+  border-bottom: 1px solid $color-border;
+  box-shadow: inset 0 0 1px #e4e4e4;
+
+  @media(min-width: $tablet) {
+    position: sticky;
+    top: $size-navbar;
+    z-index: $z-navbar - 1;
+  }
+
+  @media(min-width: $widescreen) {
+    max-width: calc(100vw - #{$size-menu});
+  }
+
+  > .container {
+    // padding: 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__group {
+    display: flex;
+  }
+
+  &__tab {
+    position: relative;
+    min-width: 40px;
+    padding: 1em .2em calc(1em - 3px);
+
+    font-weight: 600;
+    color: $color-text-label;
+    text-transform: uppercase;
+
+    &.active, &:hover {
+      color: $color-tint;
+      border-bottom: 3px solid $color-tint;
+    }
+
+    & + .tabs__tab {
+      margin-left: 3.5em;
+    }
+  }
+
+  &__icon {
+    height: 22px;
+    margin: auto;
+
+    & + .tabs__icon {
+      margin-left: 1.5em;
+    }
+  }
+}
+
+.card > .tabs {
+  margin: -1em -1em 1em;
+}
+
+.header + .tabs {
+  margin-top: -1em;
+}

@@ -1,0 +1,34 @@
+<svg width="19" height="19" viewBox="0 0 19 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:figma="http://www.figma.com/figma/ns">
+<title>Group</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-13473 -4539)" figma:type="canvas">
+<g id="Group" style="mix-blend-mode:normal;" figma:type="frame">
+<g id="Group" style="mix-blend-mode:normal;" figma:type="frame">
+<g id="Filled Icons 1" style="mix-blend-mode:normal;" figma:type="frame">
+<g id="Filled Icons" style="mix-blend-mode:normal;" figma:type="frame">
+<g id="Group" style="mix-blend-mode:normal;" figma:type="frame">
+<g id="Vector" style="mix-blend-mode:normal;" figma:type="vector">
+<use xlink:href="#path0_fill" transform="translate(13473.4 4551.71)" fill="#BDBDBD" style="mix-blend-mode:normal;"/>
+</g>
+<g id="Vector" style="mix-blend-mode:normal;" figma:type="vector">
+<use xlink:href="#path1_fill" transform="matrix(0.7074 -0.7069 0.7069 0.7074 13485.2 4541.09)" fill="#BDBDBD" style="mix-blend-mode:normal;"/>
+</g>
+<g id="Vector" style="mix-blend-mode:normal;" figma:type="vector">
+<use xlink:href="#path2_fill" transform="matrix(0.7071 -0.7071 0.7071 0.7071 13475.1 4551.16)" fill="#BDBDBD" style="mix-blend-mode:normal;"/>
+</g>
+<g id="Vector" style="mix-blend-mode:normal;" figma:type="vector">
+<use xlink:href="#path3_fill" transform="translate(13486.2 4539.19)" fill="#BDBDBD" style="mix-blend-mode:normal;"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" d="M 0.0102031 5.0128C -0.0202375 5.14065 0.0185742 5.27535 0.111418 5.36895C 0.201218 5.45951 0.333634 5.50137 0.467572 5.47017C 0.467572 5.47017 5.45221 4.29592 5.48113 4.2807L 1.20043 -4.41262e-07C 1.18445 0.0281571 0.0102031 5.0128 0.0102031 5.0128Z"/>
+<path id="path1_fill" d="M 0.761014 0L 0 0L 0 6.08811L 0.761014 6.08811L 0.761014 0Z"/>
+<path id="path2_fill" d="M 13.4753 0L 0 0L 0 6.08811L 13.4753 6.08811L 13.4753 0Z"/>
+<path id="path3_fill" d="M 4.30506 5.13076L 4.57445 4.86136C 5.31644 4.12013 5.31644 2.91316 4.57445 2.17117L 2.96034 0.557823C 2.60115 0.197103 2.12323 2.26799e-11 1.61487 2.26799e-11C 1.10651 2.26799e-11 0.628597 0.197864 0.269398 0.557823L -6.15444e-07 0.8257L 4.30506 5.13076Z"/>
+</defs>
+</svg>

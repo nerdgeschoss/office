@@ -1,0 +1,29 @@
+.ticket-logo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 39px;
+  min-width: 39px;
+  font-size: 13px;
+  color: $color-text-label;
+  text-transform: uppercase;
+  background-color: #fff;
+  border-radius: 3px;
+
+  img {
+    width: auto;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &--editable {
+    padding: 2px;
+    cursor: move;
+    border: 1px dashed currentColor;
+  }
+
+  &--button {
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,33 @@
+.wizard {
+  position: relative;
+  overflow: hidden;
+
+  &__slide {
+    pointer-events: none;
+  }
+
+  &__check {
+    display: none !important;
+
+    + .wizard__slide {
+      position: absolute;
+      max-height: 170px;
+      padding-top: 15px; // to fix card shadow
+      margin-top: -15px;
+      overflow: hidden;
+      opacity: 0;
+    }
+
+    &:checked + .wizard__slide {
+      position: relative;
+      height: auto;
+      max-height: none;
+      opacity: 1;
+      transition: all .5s;
+
+      > * {
+        pointer-events: all;
+      }
+    }
+  }
+}

@@ -1,0 +1,91 @@
+.sales-chart {
+  position: relative;
+
+  .grid {
+    stroke-width: 1;
+    stroke: #e7e7e7;
+  }
+
+  .label {
+    font-size: 13px;
+    font-weight: lighter;
+    text-anchor: middle;
+    stroke: #919191;
+  }
+
+  .allocation {
+    fill: rgba(189, 189, 189, .2);
+  }
+
+  .total-sales {
+    fill: url('#totalSales');
+  }
+
+  .interval-sales {
+    fill: url('#intervalSales');
+  }
+
+  &__cursor {
+    stroke: #eb5757;
+    stroke-width: 2;
+
+    &.sales-chart__cursor--interval {
+      stroke: #2d9cdb;
+    }
+  }
+
+  &__hover {
+    position: relative;
+    cursor: pointer;
+  }
+
+  &__cursor-bubble {
+    fill: #eb5757;
+    r: 6;
+    &.sales-chart__cursor-bubble--interval {
+      fill: #2d9cdb;
+    }
+  }
+
+  &__spacer {
+    fill: transparent;
+  }
+
+  &__header {
+    padding: 0;
+    margin: 0 0 4px;
+    font-size: 10px;
+    text-transform: uppercase;
+    border: none;
+  }
+
+  &__popover {
+    width: 180px;
+    span {
+      flex: 1;
+    }
+    .line {
+      margin-bottom: 16px;
+      font-weight: 600;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__trend {
+    flex: 2 !important;
+  }
+
+  &__trend--positive {
+    color: $color-success;
+    &::before {
+      content: '+';
+    }
+  }
+
+  &__trend--negative {
+    color: $color-error;
+  }
+}

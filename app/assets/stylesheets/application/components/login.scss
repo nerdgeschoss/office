@@ -1,0 +1,14 @@
+.login {
+  position: relative;
+  width: 100vw;
+  max-width: 320px;
+  padding: 2em 1em;
+
+  &__logo {
+    margin: 0 0 2em 1em;
+  }
+
+  &--wide {
+    max-width: 684px;
+  }
+}

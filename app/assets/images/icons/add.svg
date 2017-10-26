@@ -1,0 +1,18 @@
+<svg width="24" height="24" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>plus</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-1291 -59804)">
+<g id="plus">
+<g id="Rectangle 99">
+<use xlink:href="#path0_fill" transform="translate(1294 59814.5)" fill="#979797"/>
+</g>
+<g id="Rectangle 98">
+<use xlink:href="#path1_fill" transform="translate(1301.5 59807)" fill="#979797"/>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" d="M 0 1.5C 0 0.671573 0.671573 0 1.5 0L 16.5 0C 17.3284 0 18 0.671573 18 1.5C 18 2.32843 17.3284 3 16.5 3L 1.5 3C 0.671573 3 0 2.32843 0 1.5Z"/>
+<path id="path1_fill" d="M 0 1.5C 0 0.671573 0.671573 0 1.5 0C 2.32843 0 3 0.671573 3 1.5L 3 16.5C 3 17.3284 2.32843 18 1.5 18C 0.671573 18 0 17.3284 0 16.5L 0 1.5Z"/>
+</defs>
+</svg>

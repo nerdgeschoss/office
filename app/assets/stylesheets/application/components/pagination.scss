@@ -1,0 +1,16 @@
+.pagination {
+  padding: 1em;
+  font-size: .8em;
+  font-weight: normal;
+  color: $color-text-label;
+  text-align: right;
+
+  > * {
+    margin-left: 1em;
+    vertical-align: middle;
+  }
+
+  a {
+    display: inline-block;
+  }
+}

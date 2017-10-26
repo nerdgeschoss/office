@@ -1,0 +1,67 @@
+.modal {
+  position: absolute;
+  top: 100%;
+  z-index: $z-modal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  min-height: 100vh;
+  pointer-events: none;
+  opacity: 0;
+
+  transition: all .5s;
+
+  > .container {
+    flex: 1;
+  }
+
+  .card {
+    box-shadow: 0 15px 30px $color-shadow;
+  }
+
+  &__blind {
+    position: fixed;
+    z-index: $z-modal-blind;
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    background-color: rgba(#fff, .7);
+    opacity: 0;
+    transition: opacity .5s;
+  }
+
+  &__checkbox {
+    display: none;
+
+    &:not(:checked) {
+      + .modal-blind + .modal {
+        .wizard-slide {
+          pointer-events: none;
+        }
+      }
+    }
+
+    &:checked {
+      + .modal__blind {
+        pointer-events: all;
+        opacity: 1;
+
+        + .modal {
+          top: 30px;
+          opacity: 1;
+          .card  {
+            pointer-events: all;
+          }
+        }
+      }
+    }
+  }
+}
+
+.test {
+  .modal, .modal__blind {
+    transition: none;
+  }
+}

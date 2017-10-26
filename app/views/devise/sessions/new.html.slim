@@ -1,8 +1,9 @@
-= awesome_form_with model: resource, url: user_session_path, local: true do |f|
-  = f.email_field :email, icon: :mail
-  = f.password_field :password, icon: :lock
-  - if devise_mapping.rememberable?
-    = f.check_box :remember_me
-  = f.submit t(".sign_in"), class: "Button--fill"
+= card :login
+  = awesome_form_with model: resource, url: user_session_path, local: true do |f|
+    = f.email_field :email, icon: :mail
+    = f.password_field :password, icon: :lock
+    - if devise_mapping.rememberable?
+      = f.check_box :remember_me
+    = f.submit t(".sign_in"), class: "Button--fill"
 
-= render "devise/shared/links"
+  = render "devise/shared/links"

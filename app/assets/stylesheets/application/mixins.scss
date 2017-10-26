@@ -1,0 +1,32 @@
+@mixin tnum() {
+	font-feature-settings: 'tnum' 1;
+}
+
+@mixin popover() {
+	position: absolute;
+	z-index: $z-popover;
+	padding: 1em;
+  margin-top: .1em;
+	font-weight: normal;
+	color: $color-text;
+  text-transform: none;
+
+  background-color: $color-background-tabs;
+	border: 1px solid $color-border;
+	border-radius: 5px;
+  box-shadow: 0 2px 4px $color-shadow;
+
+	&::after { // the triangle
+		position: absolute;
+		top: -.5em;
+		left: 1em;
+		z-index: $z-popover + 1;
+		display: block;
+		width: 1.2em;
+		height: 1.2em;
+    background: $color-background-tabs;
+		content: '';
+    transform: rotate(45deg);
+    box-shadow: 0 -2px 1px -1px $color-shadow;
+  }
+}

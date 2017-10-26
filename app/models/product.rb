@@ -18,5 +18,7 @@ class Product < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
 
+  scope :available_in_kiosk, -> { where(available_in_kiosk: true, deprecated: false) }
+
   has_many :invoice_lines, dependent: :destroy
 end

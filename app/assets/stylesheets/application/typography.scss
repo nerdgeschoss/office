@@ -1,0 +1,70 @@
+h1, h2, h3, h4, h5, h6 {
+  padding: 0;
+  margin: 0;
+  font-family: $font-heading;
+  font-size: 1em;
+  font-weight: normal;
+  line-height: 1;
+	font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+}
+
+a {
+  color: currentColor;
+	text-decoration: none;
+
+  &.link {
+    max-width: 100%;
+    overflow: hidden;
+    color: $color-tint;
+		text-overflow: ellipsis;
+  }
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: normal;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+h3 {
+  margin: 16px 0;
+  font-weight: 600;
+}
+
+h4 {
+  font-weight: 600;
+}
+
+p {
+  margin: 0 0 24px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+code {
+  pre {
+    overflow: auto;
+  }
+}
+
+.right {
+  text-align: right;
+}
+
+.center {
+  text-align: center;
+}
+
+.danger {
+  color: $color-error;
+}
+
+.muted {
+	color: $color-text-label;
+}

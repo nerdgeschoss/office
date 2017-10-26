@@ -1,0 +1,98 @@
+.table {
+  display: block;
+
+  &__row {
+    display: flex;
+    align-items: center;
+    padding: 16px 24px;
+    border-top: 1px solid $color-border;
+
+    &:hover { .table-context { display: inherit; } }
+
+    &--attached {
+      border-top: none;
+    }
+  }
+
+  &__search {
+    padding: 0 24px 12px;
+  }
+
+  &__context {
+    display: none;
+  }
+
+  &__cell {
+    flex: 3;
+
+    + .table__cell {
+      margin-left: 1em;
+    }
+
+    &--selection {
+      flex: 0 0 26px;
+    }
+
+    &--slim {
+      flex: 1;
+    }
+
+    &--wide {
+      flex: 5;
+    }
+
+    > a {
+      color: $color-tint;
+    }
+  }
+
+  &__head {
+    margin-bottom: -1px; // collapses with first row and hides the top border of it
+    font-size: 12px;
+    font-weight: 600;
+    color: $color-text-label;
+    text-transform: uppercase;
+    border-bottom: 1px solid $color-border;
+
+    .table__row {
+      align-items: center;
+      min-height: 56px;
+      border-top: none;
+    }
+  }
+
+  &__body {
+    font-size: 13px;
+  }
+
+  &__foot {
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  &__filter {
+    padding: 1em;
+    background-color: $color-background-tabs;
+    border-bottom: 1px solid $color-border;
+  }
+
+  &__select {
+    display: block;
+    width: 18px;
+    appearance: none;
+  }
+
+  &--sticky-header {
+    .table__head {
+      position: sticky;
+      top: $size-navbar + $size-tabs;
+      background-color: #fff;
+    }
+  }
+}
+
+a, label {
+  &.table__row:hover {
+    background-color: $color-background;
+  }
+}

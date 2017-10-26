@@ -1,0 +1,39 @@
+<svg width="20" height="20" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>icon-center--small</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-638 -60143)">
+<g id="icon-center--small">
+<g id="Rectangle 111">
+<use xlink:href="#path0_fill" transform="translate(638 60143)" fill="#FFFFFF" fill-opacity="0.01"/>
+</g>
+<g id="Group">
+<g id="Rectangle 110">
+<use xlink:href="#path1_fill" transform="translate(651 60152)" fill="#909090"/>
+</g>
+<g id="Rectangle 110">
+<use xlink:href="#path1_fill" transform="translate(639 60152)" fill="#909090"/>
+</g>
+<g id="Rectangle 110">
+<use xlink:href="#path1_fill" transform="matrix(6.12323e-17 -1 1 6.12323e-17 647 60150)" fill="#909090"/>
+</g>
+<g id="Rectangle 110">
+<use xlink:href="#path1_fill" transform="matrix(6.12323e-17 -1 1 6.12323e-17 647 60162)" fill="#909090"/>
+</g>
+<g id="Ellipse 23">
+<mask id="mask0_outline_ins">
+<use xlink:href="#path2_fill" fill="white" transform="translate(639 60144)"/>
+</mask>
+<g mask="url(#mask0_outline_ins)">
+<use xlink:href="#path3_stroke_2x" transform="translate(639 60144)" fill="#909090"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" d="M 0 0L 20 0L 20 20L 0 20L 0 0Z"/>
+<path id="path1_fill" d="M 0 1C 0 0.447715 0.447715 0 1 0L 5 0C 5.55228 0 6 0.447716 6 1L 6 1C 6 1.55228 5.55228 2 5 2L 1 2C 0.447715 2 0 1.55228 0 1L 0 1Z"/>
+<path id="path2_fill" d="M 18 9C 18 13.9706 13.9706 18 9 18C 4.02944 18 0 13.9706 0 9C 0 4.02944 4.02944 0 9 0C 13.9706 0 18 4.02944 18 9Z"/>
+<path id="path3_stroke_2x" d="M 16 9C 16 12.866 12.866 16 9 16L 9 20C 15.0751 20 20 15.0751 20 9L 16 9ZM 9 16C 5.13401 16 2 12.866 2 9L -2 9C -2 15.0751 2.92487 20 9 20L 9 16ZM 2 9C 2 5.13401 5.13401 2 9 2L 9 -2C 2.92487 -2 -2 2.92487 -2 9L 2 9ZM 9 2C 12.866 2 16 5.13401 16 9L 20 9C 20 2.92487 15.0751 -2 9 -2L 9 2Z"/>
+</defs>
+</svg>

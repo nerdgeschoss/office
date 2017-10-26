@@ -1,0 +1,77 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  padding: .5em 1em;
+  color: #fff;
+  cursor: pointer;
+  background-color: $color-tint;
+  border: none;
+  outline: none;
+  appearance: none;
+  user-select: none;
+
+  &--fill {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  &--inline {
+    padding: 0;
+  }
+
+  &--link {
+    padding: 0;
+    font-weight: 600;
+    color: currentColor;
+    text-transform: uppercase;
+    background-color: transparent;
+
+    + .button {
+      margin-left: 32px;
+    }
+  }
+
+  &--primary {
+    color: $color-tint;
+  }
+
+  &--caps {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  &--disabled {
+    background-color: $color-text-muted;
+  }
+
+  &--pill {
+    padding: 4px 1em;
+    background-color: $color-text;
+    border-radius: 1em;
+  }
+
+  &--underline {
+    padding: 0;
+    color: currentColor;
+    text-decoration: underline;
+    background-color: transparent;
+  }
+
+  .icon:last-child {
+    margin-left: 1em;
+  }
+
+  &--empty-state {
+    font-weight: 600;
+    color: currentColor;
+    text-transform: uppercase;
+    background-color: #fff;
+    box-shadow: 0 1px 5px rgba(#000, .24);
+
+    &:hover {
+      box-shadow: 1px 2px 8px rgba(#000, .24);
+    }
+  }
+}

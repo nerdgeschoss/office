@@ -1,0 +1,15 @@
+.nav-bar
+  .line.line--center
+    label.nav-bar__icon for="menu" = image_tag "icons/burger.svg"
+    .nav-bar__breadcrumbs
+      - (@breadcrumbs || {}).each do |title, url|
+        = link_to t("admin.breadcrumbs.#{title}"), url
+  .nav-bar__content
+    .search: .search-box: input
+  .nav-bar__profile
+    .popover__context
+      label.avatar for="user-menu"  = image_tag current_user.avatar_url(80)
+      = popover position: :right, id: "user-menu"
+        p = link_to "profile", user_path(current_user), class: "link"
+        p = link_to "logout", destroy_user_session_path, method: :delete, class: "link"
+.nav-bar__spacer

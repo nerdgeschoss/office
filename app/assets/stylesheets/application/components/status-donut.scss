@@ -1,0 +1,83 @@
+.status-donut {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: visible;
+
+  td {
+    padding: 8px 0;
+  }
+
+  circle {
+    fill: transparent;
+    stroke-width: 10;
+  }
+
+  &__donut {
+    flex: 1;
+    max-width: 40vmin;
+    min-width: 30px;
+    margin-right: 30px;
+  }
+
+  &__legend {
+    width: 24px;
+    margin-right: 16px;
+  }
+
+  &__legend-title {
+    padding-right: 87px !important;
+  }
+
+  &__ring {
+    stroke: $color-border;
+  }
+
+  &__segment {
+    stroke-width: 10px;
+  }
+
+  &__available {
+    stroke: $color-ticket-available;
+  }
+
+  &__sold {
+    stroke: $color-ticket-sold;
+  }
+
+  &__reserved {
+    stroke: $color-ticket-reserved;
+  }
+
+  &__not-on-sale {
+    stroke: $color-border;
+  }
+
+  &__blocked {
+    stroke: $color-ticket-blocked;
+  }
+
+  &--inline {
+    figcaption {
+      display: none;
+    }
+
+    .status-donut__donut {
+      flex: 0;
+    }
+
+    &:hover {
+      figcaption {
+        top: 40px;
+        right: 18px;
+        display: block;
+        @include popover;
+
+        &::after {
+          right: 20px;
+          left: auto;
+        }
+      }
+    }
+  }
+}

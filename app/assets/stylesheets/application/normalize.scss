@@ -1,0 +1,76 @@
+html, body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: $font-text;
+  font-size: $size-text;
+  font-smoothing: antialiased;
+  line-height: 1.5;
+  color: $color-text;
+  text-rendering: optimizeLegibility;
+  text-size-adjust: 100%;
+  background-color: $color-background;
+	font-feature-settings: 'kern' 1, 'onum' 0, 'liga' 1;
+	caret-color: $color-tint;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+figure {
+  padding: 0;
+	margin: 0;
+}
+
+table, tr, th, td {
+  padding: 0;
+  margin: 0;
+  font-size: 1em;
+}
+
+div, section, img, a, input, select, textarea, footer, table, thead, tbody, tr, td, th, label, figure {
+	box-sizing: border-box;
+}
+
+td {
+	vertical-align: top;
+}
+
+label {
+	display: inline-block;
+}
+
+input, textarea, select, button {
+  padding: 0;
+  margin: 0;
+	font-size: 1em;
+	line-height: 1;
+	color: currentColor;
+}
+
+table {
+	width: 100%;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  padding: 0;
+  margin: 14px 0;
+  border: 0;
+  border-top: 1px solid $color-border;
+}
+
+hr + hr {
+	margin-top: -10px;
+}
+
+.profiler-results {
+	display: none !important;
+
+	@media(min-width: $tablet) {
+		display: block !important;
+	}
+}

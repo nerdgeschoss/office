@@ -1,0 +1,10 @@
+.card class=("card--#{variant}" if variant) id=id
+  - if title || actions.any?
+    .card__header
+      - if title
+        h2 = title
+      - if actions.any?
+        .card__options = safe_join actions
+  .card__body = content
+  - if footer
+    .card__footer = footer

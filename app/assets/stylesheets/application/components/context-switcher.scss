@@ -1,0 +1,16 @@
+.context-switcher {
+  display: flex;
+  align-items: center;
+
+  &__item {
+    margin: 10px 0 10px 10px;
+  }
+
+  @media(min-width: $tablet) {
+    flex-direction: column;
+
+    &-item {
+      margin: 10px 10px 0;
+    }
+  }
+}

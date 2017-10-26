@@ -1,0 +1,100 @@
+.avatar {
+  position: relative;
+  display: block;
+
+  img {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  // this pseudo element adapts to the avatar's with and makes it square
+  &::before {
+    display: block;
+    padding-top: 100%;
+    content: '';
+  }
+
+  // the online indicator
+  &::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: none;
+    width: 18%;
+    height: 18%;
+    background-color: $color-background;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    content: '';
+  }
+
+  input[type='file'] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    appearance: none;
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 1em;
+    color: #fff;
+    text-align: center;
+    pointer-events: none;
+    background-color: $color-shadow;
+    border-radius: 100%;
+    opacity: 0;
+    transition: opacity .3s;
+  }
+
+  &:hover {
+    .avatar__overlay {
+      opacity: 1;
+    }
+    .avatar__remove {
+      display: block;
+    }
+  }
+
+  &-remove {
+    position: absolute;
+    bottom: 1em;
+    z-index: $z-elevated;
+    display: none;
+    width: 100%;
+    color: $color-tint;
+    text-align: center;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    appearance: none;
+  }
+
+  &--online::after {
+    display: block;
+    background-color: $color-online;
+  }
+
+  &--offline::after {
+    display: block;
+  }
+
+  &--big {
+    width: 214px;
+  }
+}

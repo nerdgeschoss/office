@@ -1,0 +1,9 @@
+- page = params[:page].to_i
+- page_size = scope.limit_value
+- start_index = page_size * page + 1
+- end_index = [page_size * (page + 1), scope.total_count].min
+- if scope.total_count > 0
+  nav.pagination
+    span = "#{start_index}-#{end_index} of #{scope.total_count}"
+    = link_to_previous_page scope, icon(:previous), options.dup
+    = link_to_next_page scope, icon(:next), options.dup

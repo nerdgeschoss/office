@@ -1,0 +1,11 @@
+.menu__header
+  label.menu__close for="menu"
+    = icon "menu/close"
+  a href=root_path = image_tag "logo.svg"
+.menu__header__spacer
+.menu__items
+  - MenuItem.restricted(current_user).each do |item|
+    = menu_item(item: item)
+.menu__footer
+  - I18n.available_locales.each do |locale|
+    a href=url_for(locale: locale) = t "locale_name", locale: locale

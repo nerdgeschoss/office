@@ -1,0 +1,73 @@
+.pricing-form {
+  position: relative;
+  overflow-x: auto;
+  font-size: 13px;
+
+  &__table {
+    width: auto;
+    border-collapse: collapse;
+  }
+
+  td {
+    padding: 10px 20px;
+    vertical-align: middle;
+
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+
+  th {
+    font-size: $size-text-label;
+    font-weight: 600;
+    color: $color-text-label;
+    text-align: left;
+  }
+
+  .input {
+    margin-bottom: 0;
+  }
+
+  &__number {
+    input {
+      width: 64px;
+    }
+  }
+
+  &__shortnumber {
+    width: auto;
+    input {
+      width: 28px;
+    }
+  }
+
+  &__button {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    padding: 0 !important;
+    background-size: 100%;
+  }
+
+  &__calculator {
+    background-image: asset-url('icons/calculator.svg');
+  }
+
+  &__add {
+    background-image: asset-url('icons/add-button.svg');
+  }
+
+  &__remove {
+    background-image: asset-url('icons/remove_button.svg');
+  }
+
+  &__total {
+    border-top: 1px solid $color-border;
+    border-color: $color-border;
+    border-bottom-style: double;
+  }
+
+  &, tr, td, th {
+    // border: 1px dashed black;
+  }
+}

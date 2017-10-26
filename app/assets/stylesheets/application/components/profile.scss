@@ -1,0 +1,21 @@
+.profile {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  &__avatar {
+    width: 50px;
+    height: 50px;
+    margin-left: .5em;
+  }
+
+  &__logout {
+    display: none;
+  }
+
+  &:hover {
+    .profile-logout {
+      display: block;
+    }
+  }
+}

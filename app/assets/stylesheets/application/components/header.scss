@@ -1,0 +1,30 @@
+.header {
+  padding: 23px 0;
+  margin-bottom: 1em;
+
+  color: #fff;
+  background-color: #343434;
+
+  > .container {
+    display: flex;
+  }
+
+  &__date {
+    width: 3em;
+    margin-right: 1em;
+    font-family: $font-mono;
+    text-transform: uppercase;
+  }
+
+  &__date__day, &__title {
+    margin: 0 0 4px;
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 1;
+  }
+
+  &__date__month, &__components {
+    margin: 0;
+    font-size: 15px;
+  }
+}

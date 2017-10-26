@@ -1,0 +1,28 @@
+<svg width="39" height="38" viewBox="0 0 39 38" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:figma="http://www.figma.com/figma/ns">
+<title>Group</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-2058 -19261)" figma:type="canvas">
+<g id="Group" style="mix-blend-mode:normal;" figma:type="frame">
+<g id="Ellipse 19" style="mix-blend-mode:normal;" figma:type="ellipse">
+<use xlink:href="#path0_fill" transform="translate(2058.5 19261)" fill="#EEEEEE" style="mix-blend-mode:normal;"/>
+</g>
+<g id="Group" style="mix-blend-mode:normal;" figma:type="frame">
+<g id="Group" style="mix-blend-mode:normal;" figma:type="frame">
+<g id="Rectangle 47" style="mix-blend-mode:normal;" figma:type="rounded-rectangle">
+<use xlink:href="#path1_fill" transform="translate(2068.5 19273)" fill="#343434" style="mix-blend-mode:normal;"/>
+</g>
+<g id="Rectangle 47" style="mix-blend-mode:normal;" figma:type="rounded-rectangle">
+<use xlink:href="#path1_fill" transform="translate(2068.5 19279)" fill="#343434" style="mix-blend-mode:normal;"/>
+</g>
+<g id="Rectangle 47" style="mix-blend-mode:normal;" figma:type="rounded-rectangle">
+<use xlink:href="#path1_fill" transform="translate(2068.5 19285)" fill="#343434" style="mix-blend-mode:normal;"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" d="M 38 19C 38 29.4934 29.4934 38 19 38C 8.50659 38 0 29.4934 0 19C 0 8.50659 8.50659 0 19 0C 29.4934 0 38 8.50659 38 19Z"/>
+<path id="path1_fill" d="M 0 0L 18 0L 18 2L 0 2L 0 0Z"/>
+</defs>
+</svg>

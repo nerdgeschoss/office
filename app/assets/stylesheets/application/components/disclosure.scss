@@ -1,0 +1,13 @@
+.disclosure {
+  width: 0;
+  height: 0;
+  margin-left: 5px;
+  border: 8px solid transparent;
+  border-left: 6px solid $color-border;
+  border-right-width: 0;
+  transition: transform .3s;
+
+  &.active {
+    transform: rotate(90deg);
+  }
+}

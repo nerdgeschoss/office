@@ -1,0 +1,90 @@
+.popover {
+  @include popover;
+  max-width: 100%;
+  min-width: 15em;
+
+  &__footer {
+    padding-top: 1em;
+    margin-top: 1em;
+    text-align: center;
+    border-top: 1px solid $color-border;
+
+    &:first-child {
+      margin: 0;
+      border: none;
+    }
+  }
+
+  &__blind {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: $z-popover - 1;
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    content: '';
+  }
+
+  &__context {
+    position: relative;
+  }
+
+  &__toggle {
+    display: none;
+
+    + .popover {
+      pointer-events: none;
+      opacity: 0;
+      transform: translate(0, 10px);
+      transition: all .2s cubic-bezier(.83, .775, .625, 1.615);
+    }
+
+    ~ .popover__blind {
+      pointer-events: none;
+    }
+
+    &:checked {
+      + .popover {
+        pointer-events: inherit;
+        opacity: 1;
+        transform: none;
+      }
+
+      ~ .popover__blind {
+        pointer-events: inherit;
+      }
+    }
+  }
+
+  &--right {
+    right: 0;
+
+    &::after {
+      right: 1em;
+      left: auto;
+    }
+  }
+
+  &--aside {
+    right: 0;
+    &::after {
+      top: 1em;
+      right: -.6em;
+      left: auto;
+      box-shadow: 2px 0 1px -1px $color-shadow;
+    }
+  }
+
+  &--aside-right {
+    &::after {
+      top: 1em;
+      left: -.6em;
+      box-shadow: -2px 0 1px -1px $color-shadow;
+    }
+  }
+
+  &--wide {
+    min-width: 30em;
+  }
+}
