@@ -1,0 +1,7 @@
+- title team.name
+- modal id: :edit_team, show: team.errors.any?
+  = card :edit_team
+    = awesome_form_for team do |f|
+      = f.text_field :name
+      = f.submit_line
+= header team.name, components: [edit_if(:edit_team, policy(team).update?)]

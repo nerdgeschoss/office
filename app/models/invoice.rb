@@ -30,8 +30,10 @@ class Invoice < ApplicationRecord
   end
 
   def close!
-    return if invoiced?
-    update! invoiced_at: DateTime.current
+    return if invoiced? || total == 0
+    Invoice.with_table_lock do
+      update! invoiced_at: DateTime.current, invoice_number: (Invoice.maximum(:invoice_number) || 1) + 1
+    end
   end
 
   def accounting_amount

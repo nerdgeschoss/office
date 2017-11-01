@@ -19,20 +19,21 @@
       = f.submit_line
 = header @user.name, components: [ mail_to(@user.email), edit_if(:edit_user, policy(@user).update?) ]
 .container
-  = card :devices, variant: :table, actions: [add_if(:create_device, policy(@device).create?)]
-    .table
-      .table__head
-        .table__row
-          .table__cell.table__cell--wide = Device.human_attribute_name :name
-          .table__cell = Device.human_attribute_name :mac_address
-          .table__cell.table__cell--slim = Device.human_attribute_name :last_activity_at
-          .table__cell.table__cell--selection
-      .table__body
-        - @user.devices.select(&:persisted?).each do |device|
+  - if policy(@device).create?
+    = card :devices, variant: :table, actions: [add_if(:create_device, true)]
+      .table
+        .table__head
           .table__row
-            .table__cell.table__cell--wide = device.name
-            .table__cell = device.mac_address
-            .table__cell.table__cell--slim = timeago_tag device.last_activity_at
+            .table__cell.table__cell--wide = Device.human_attribute_name :name
+            .table__cell = Device.human_attribute_name :mac_address
+            .table__cell.table__cell--slim = Device.human_attribute_name :last_activity_at
             .table__cell.table__cell--selection
-              - if policy(device).destroy?
-                = link_to icon(:trash), device, method: :delete
+        .table__body
+          - @user.devices.select(&:persisted?).each do |device|
+            .table__row
+              .table__cell.table__cell--wide = device.name
+              .table__cell = device.mac_address
+              .table__cell.table__cell--slim = timeago_tag device.last_activity_at
+              .table__cell.table__cell--selection
+                - if policy(device).destroy?
+                  = link_to icon(:trash), device, method: :delete

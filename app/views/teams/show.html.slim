@@ -1,10 +1,4 @@
-- title @team.name
-- modal id: :edit_team, show: @team.errors.any?
-  = card :edit_team
-    = awesome_form_for @team do |f|
-      = f.text_field :name
-      = f.submit_line
-= header @team.name, components: [edit_if(:edit_team, policy(@team).update?)]
+= render "teams/head", team: @team
 .container
   = card :members, variant: :table
     .table
@@ -47,7 +41,7 @@
             .table__cell.table__cell--slim
             .table__cell.table__cell--slim = number_to_currency @team.open_invoice.total
             .table__cell.table__cell--slim
-              - if policy(@team.open_invoice).update?
+              - if policy(@team.open_invoice).update? && @team.open_invoice.total > 0
                 = link_to t(".close_invoice"), invoice_path(@team.open_invoice), method: :patch, class: "button button--link"
   - @subscription ||= @team.subscriptions.build
   - modal id: :add_subscription, show: @subscription.errors.any?
@@ -83,9 +77,10 @@
       = awesome_form_for [@team, @payment] do |f|
         = f.text_field :amount
         = f.text_field :subject
+        = f.date_field :created_at
         = f.submit_line
   - if policy(@team).show_financial?
-    = card :invoices, variant: :table
+    = card :invoices, variant: :table, actions: [add_if(:add_payment, policy(Payment).create?)]
       .table
         .table__head
           .table__row
@@ -98,18 +93,22 @@
           - @team.invoices_and_payments.each do |doc|
             - balance += doc.accounting_amount
             .table__row
-              .table__cell = doc.is_a?(Payment) ? doc.subject : doc.id
-              .table__cell.table__cell--slim
-                = number_to_accounting doc.accounting_amount
-                - if doc.is_a? Invoice
+              - if doc.is_a?(Payment)
+                .table__cell = doc.subject
+                .table__cell.table__cell--slim
+                  = number_to_accounting doc.accounting_amount
+                .table__cell.table__cell--slim = number_to_accounting balance
+                .table__cell.table__cell--slim = l doc.created_at.to_date, format: :short
+              - else
+                .table__cell = link_to doc.id, doc
+                .table__cell.table__cell--slim
+                  = number_to_accounting doc.accounting_amount
                   small = t ".price_plus_vat", price: number_to_currency(doc.total), vat: number_to_currency(doc.vat)
-              .table__cell.table__cell--slim = number_to_accounting balance
-              .table__cell.table__cell--slim = l doc.created_at.to_date, format: :short
+                .table__cell.table__cell--slim = number_to_accounting balance
+                .table__cell.table__cell--slim = l doc.created_at.to_date, format: :short
         .table__foot
           .table__row
             .table__cell
             .table__cell.table__cell--slim
             .table__cell.table__cell--slim = number_to_accounting balance
             .table__cell.table__cell--slim
-              - if policy(Payment).create?
-                label.button.button--link for=:add_payment = t(".add_payment")

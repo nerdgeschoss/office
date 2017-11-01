@@ -1,6 +1,9 @@
 class InvoicesController < ApplicationController
   before_action :load_invoice
 
+  def show
+  end
+
   def update
     @invoice.close!
     redirect_to @invoice.team

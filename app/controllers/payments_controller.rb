@@ -12,6 +12,6 @@ class PaymentsController < ApplicationController
   private
 
   def payment_params
-    params.require(:payment).permit(:amount, :subject)
+    params.require(:payment).permit(:amount, :subject, :created_at)
   end
 end

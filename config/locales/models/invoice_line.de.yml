@@ -3,11 +3,13 @@ de:
   activerecord:
     attributes:
       invoice_line:
+        created_at: Created at
         price: Preis
         purchased_at: gekauft am
         quantity: Menge
         total: Gesamt
         user: Nutzer
+        vat: Vat
     models:
       invoice_line:
         one: Rechnungszeile

@@ -1,0 +1,5 @@
+---
+en:
+  invoices:
+    show:
+      purchased_by: "purchased by %{user}"

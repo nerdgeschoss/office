@@ -1,0 +1,34 @@
+= render "teams/head", team: @invoice.team
+.container
+  = card "Invoice #{@invoice.invoice_number}", variant: :table
+    .table
+      .table__head
+        .table__row
+          .table__cell.table__cell--selection
+          .table__cell = Product.model_name.human
+          .table__cell = InvoiceLine.human_attribute_name :price
+          .table__cell = InvoiceLine.human_attribute_name :vat
+          .table__cell = InvoiceLine.human_attribute_name :quantity
+          .table__cell = InvoiceLine.human_attribute_name :created_at
+      .table__body
+        - balance = 0
+        - @invoice.lines.each do |line|
+          .table__row
+            .table__cell.table__cell--selection = avatar line.product
+            .table__cell
+              = line.product.name
+              - if line.user
+                div: small = t(".purchased_by", user: line.user.name)
+            .table__cell = number_to_accounting line.price
+            .table__cell = number_to_accounting line.vat
+            .table__cell = line.quantity
+            .table__cell = l line.created_at, format: :short
+        .table__row
+          .table__cell.table__cell--selection
+          .table__cell
+          .table__cell
+            = number_to_accounting @invoice.total
+            div: small = number_to_accounting @invoice.total_brut
+          .table__cell = number_to_accounting @invoice.vat
+          .table__cell
+          .table__cell = l @invoice.invoiced_at, format: :short

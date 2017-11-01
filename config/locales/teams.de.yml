@@ -1,6 +1,8 @@
 ---
 de:
   teams:
+    head:
+      edit_team: Edit team
     index:
       create_team: Team erstellen
       teams: Teams
