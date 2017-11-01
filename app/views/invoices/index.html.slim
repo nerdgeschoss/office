@@ -62,7 +62,7 @@
               .table__cell.table__cell--slim = number_to_accounting balance
               .table__cell.table__cell--slim = l doc.created_at.to_date, format: :short
             - else
-              .table__cell = link_to doc.id, team_invoice_path(@team, doc)
+              .table__cell = link_to doc.invoice_number, team_invoice_path(@team, doc)
               .table__cell.table__cell--slim
                 = number_to_accounting doc.accounting_amount
                 small = t ".price_plus_vat", price: number_to_currency(doc.total), vat: number_to_currency(doc.vat)
