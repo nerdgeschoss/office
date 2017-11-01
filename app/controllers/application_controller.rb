@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
   before_action :track_activity
   before_action :redirect_kiosk
+  force_ssl if: -> { Rails.env.production? }
 
   private
 
