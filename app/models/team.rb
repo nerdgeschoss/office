@@ -31,6 +31,6 @@ class Team < ApplicationRecord
   end
 
   def balance
-    payments.sum(&:amount) - invoices.sum(&:total)
+    payments.sum(&:amount) - invoices.sum(&:total_brut)
   end
 end
