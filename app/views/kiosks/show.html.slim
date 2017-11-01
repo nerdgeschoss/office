@@ -2,7 +2,7 @@
 .container
   = form_with url: kiosk_path do |f|
     = card :who_are_you
-      .line.line--left
+      .line.line--left.line--wrap
         - @users.each do |user|
           label.center for=user.id
             = f.radio_button :user_id, user.id, id: user.id, required: true
