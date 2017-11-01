@@ -1,5 +1,5 @@
 module IconHelper
-  def avatar(resource, size: 80)
+  def avatar(resource, size: nil)
     _ = size
     url = nil
     url = resource.image.presence&.url if resource.is_a?(Product)
@@ -7,7 +7,7 @@ module IconHelper
     return unless url
     tag.div(
       image_tag(url),
-      class: "avatar"
+      class: "avatar avatar--#{size}"
     )
   end
 

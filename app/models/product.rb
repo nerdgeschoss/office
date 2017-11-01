@@ -27,6 +27,7 @@ class Product < ApplicationRecord
 
   scope :available_in_kiosk, -> { where(available_in_kiosk: true, deprecated: false) }
   scope :active, -> { where(deprecated: false) }
+  scope :alphabetical, -> { order(name: :asc) }
 
   has_many :invoice_lines, dependent: :destroy
 

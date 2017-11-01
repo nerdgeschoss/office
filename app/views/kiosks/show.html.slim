@@ -6,13 +6,13 @@
         - @users.each do |user|
           label.center for=user.id
             = f.radio_button :user_id, user.id, id: user.id, required: true
-            = avatar user
+            = avatar user, size: :small
             div = user.name
             small = user.team.name
     = card :kiosk
-      .line.line--grid
+      .line.line--wrap
         - @products.each do |product|
-          label.center
-            .avatar = image_tag product.image
-            div = product.name
-            = f.button t(".buy"), value: product.id, class: "button"
+          label.product
+            .product__image = avatar product
+            .product__name = product.name
+            = f.button t(".buy"), value: product.id, class: "button product__button"

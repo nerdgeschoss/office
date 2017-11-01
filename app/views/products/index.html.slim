@@ -14,8 +14,6 @@
       .table__body
         - @products.each do |product|
           a.table__row href=product_path(product)
-            .table__cell.table__cell--selection
-              - if product.image.present?
-                .avatar = image_tag(product.image)
+            .table__cell.table__cell--selection = avatar product
             .table__cell = product.name
             .table__cell = number_to_currency product.price

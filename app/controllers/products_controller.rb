@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_action :load_products, except: [:index, :create]
 
   def index
-    @products = policy_scope(Product)
+    @products = policy_scope(Product).alphabetical
   end
 
   def show
