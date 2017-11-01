@@ -16,4 +16,5 @@
         = tab Subscription.model_name.human(count: 3), path: team_subscriptions_path(team)
         = tab Invoice.model_name.human(count: 3), path: team_invoices_path(team)
     .tabs_group
-      .tabs__tab: label for=:edit_team = icon(:edit, size: :small)
+      - if policy(team).edit?
+        .tabs__tab: label for=:edit_team = icon(:edit, size: :small)
