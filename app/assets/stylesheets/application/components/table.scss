@@ -87,6 +87,7 @@
       position: sticky;
       top: $size-navbar + $size-tabs;
       background-color: #fff;
+      z-index: $z-elevated;
     }
   }
 }

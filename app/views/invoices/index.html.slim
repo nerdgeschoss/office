@@ -2,7 +2,7 @@
 .container
   - if @team.open_invoice.lines.any?
     = card :open_invoice, variant: :table
-      .table
+      .table.table--sticky-header
         .table__head
           .table__row
             .table__cell = Product.model_name.human
@@ -40,7 +40,7 @@
         = f.date_field :created_at
         = f.submit_line
   = card :invoices, variant: :table, actions: [add_if(:add_payment, policy(Payment).create?)]
-    .table
+    .table.table--sticky-header
       .table__head
         .table__row
           .table__cell = Invoice.model_name.human

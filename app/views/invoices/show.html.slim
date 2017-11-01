@@ -1,7 +1,7 @@
 = render "teams/head", team: @invoice.team
 .container
   = card "Invoice #{@invoice.invoice_number}", variant: :table
-    .table
+    .table.table--sticky-header
       .table__head
         .table__row
           .table__cell.table__cell--selection

@@ -21,7 +21,7 @@
       .table__body
         - @users.each do |user|
           a.table__row href=user_path(user)
-            .table__cell.table__cell--selection
+            .table__cell.table__cell--selection = avatar user
             .table__cell
               div = user.name
               small.text_muted = user.team.name

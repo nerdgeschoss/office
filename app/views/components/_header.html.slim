@@ -4,6 +4,8 @@ header.header
       .header__date
         .header__date__day = date.day.to_s.rjust(2, "0")
         .header__date__month = t("date.abbr_month_names")[date.month]
+    - if aside
+      .header__date = aside
     .header__content
       h1.header__title = title
       .header__components = safe_join components, " · "

@@ -18,8 +18,8 @@ module ComponentHelper
     end
   end
 
-  def header(title, date: nil, components: [])
-    render "components/header", title: title, date: date, components: components
+  def header(title, date: nil, components: [], aside: nil)
+    render "components/header", title: title, date: date, components: components, aside: aside
   end
 
   def card(title = nil, actions: [], footer: nil, variant: nil, id: nil)
