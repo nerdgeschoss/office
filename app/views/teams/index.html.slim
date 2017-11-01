@@ -18,7 +18,7 @@
         - @teams.each do |team|
           a.table__row href=team_path(team)
             .table__cell.table__cell--slim: .stack
-              - team.users.each do |user|
+              - team.users.without_role(:kiosk).each do |user|
                 = avatar user
             .table__cell = team.name
             - if policy(Team).financial_overview?
