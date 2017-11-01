@@ -8,7 +8,7 @@
           .table__cell = User.human_attribute_name :name
           .table__cell = User.human_attribute_name :email
       .table__body
-        - @team.users.each do |user|
+        - @team.users.without_role(:kiosk).each do |user|
           a.table__row href=user_path(user)
             .table__cell.table__cell--selection
             .table__cell = user.name

@@ -17,7 +17,7 @@
       = f.text_field :name
       = f.text_field :mac_address
       = f.submit_line
-= header @user.name, components: [ mail_to(@user.email), edit_if(:edit_user, policy(@user).update?) ], aside: avatar(@user)
+= header @user.name, components: [link_to(@user.team.name, @user.team), mail_to(@user.email), edit_if(:edit_user, policy(@user).update?) ], aside: avatar(@user)
 .container
   - if policy(@device).create?
     = card :devices, variant: :table, actions: [add_if(:create_device, true)]

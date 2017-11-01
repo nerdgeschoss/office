@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :load_user, except: [:index, :create]
 
   def index
-    @users = policy_scope(User)
+    @users = policy_scope(User).without_role(:kiosk)
   end
 
   def show
