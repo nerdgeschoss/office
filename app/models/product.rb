@@ -18,6 +18,9 @@ class Product < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
 
+  has_attached_file :image, styles: { medium: "256x256>", thumb: "100x100#" }
+  validates_attachment_content_type :image, content_type: %r{\Aimage\/.*\z}
+
   scope :available_in_kiosk, -> { where(available_in_kiosk: true, deprecated: false) }
   scope :active, -> { where(deprecated: false) }
 

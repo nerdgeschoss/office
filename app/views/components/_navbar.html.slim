@@ -5,7 +5,7 @@
       - (@breadcrumbs || {}).each do |title, url|
         = link_to t("admin.breadcrumbs.#{title}"), url
   .nav-bar__content
-    .search: .search-box: input
+    /.search: .search-box: input
   .nav-bar__profile
     .popover__context
       label.avatar for="user-menu"  = image_tag current_user.avatar_url(80)

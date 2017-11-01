@@ -1,5 +1,5 @@
 - title Product.model_name.human count: 2
-- @product ||= Product.new
+- @product ||= Product.new vat_rate: 19, available_in_kiosk: true
 = modal id: :add, show: @product.errors.any?
   = card :create_product
     = render "products/form"
@@ -15,5 +15,7 @@
         - @products.each do |product|
           a.table__row href=product_path(product)
             .table__cell.table__cell--selection
+              - if product.image.present?
+                .avatar = image_tag(product.image)
             .table__cell = product.name
             .table__cell = number_to_currency product.price

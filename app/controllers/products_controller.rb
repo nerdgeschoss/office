@@ -34,6 +34,6 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name, :available_in_kiosk, :price, :vat, :vat_rate, :deprecated)
+    params.require(:product).permit(:name, :available_in_kiosk, :price, :vat, :vat_rate, :deprecated, :image)
   end
 end

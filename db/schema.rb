@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171101121009) do
+ActiveRecord::Schema.define(version: 20171101131551) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,10 @@ ActiveRecord::Schema.define(version: 20171101121009) do
     t.boolean "deprecated", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
     t.index ["available_in_kiosk"], name: "index_products_on_available_in_kiosk"
     t.index ["deprecated"], name: "index_products_on_deprecated"
     t.index ["slug"], name: "index_products_on_slug", unique: true

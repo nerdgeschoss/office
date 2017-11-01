@@ -5,5 +5,7 @@ en:
       invite_user: Invite user
       users: Users
     show:
+      create_device: Create device
+      delete_user: Delete user
       devices: Devices
       edit_user: Edit user

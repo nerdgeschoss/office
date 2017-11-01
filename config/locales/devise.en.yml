@@ -1,6 +1,10 @@
 ---
 en:
   devise:
+    invitations:
+      edit:
+        accept_invite: Accept invite
+        submit_button: Submit button
     mailer:
       invitation_instructions:
         accept: Accept

@@ -1,6 +1,8 @@
 ---
 de:
   kiosks:
+    create:
+      purchased: "%{product} erfolgreich gekauft."
     show:
       buy: Kaufen
       kiosk: Kiosk

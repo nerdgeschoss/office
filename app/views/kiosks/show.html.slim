@@ -1,6 +1,6 @@
 - title t(".kiosk")
 .container
-  = form_with url: kiosk_path, local: true do |f|
+  = form_with url: kiosk_path do |f|
     = card :who_are_you
       .line.line--left
         - @users.each do |user|
@@ -9,18 +9,10 @@
             = avatar user
             div = user.name
             small = user.team.name
-    = card :kiosk, variant: :table
-      .table
-        .table__head
-          .table__row
-            .table__cell.table__cell--selection
-            .table__cell = Product.human_attribute_name :name
-            .table__cell = Product.human_attribute_name :price
-            .table__cell.table__cell--selection
-        .table__body
-          - @products.each do |product|
-            .table__row
-              .table__cell.table__cell--selection
-              .table__cell = product.name
-              .table__cell = number_to_currency product.price
-              .table__cell.table__cell--selection = f.button t(".buy"), class: "button", value: product.id
+    = card :kiosk
+      .line.line--grid
+        - @products.each do |product|
+          label.center
+            .avatar = image_tag product.image
+            div = product.name
+            = f.button t(".buy"), value: product.id, class: "button"
