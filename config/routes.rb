@@ -9,5 +9,5 @@ Rails.application.routes.draw do
   resources :devices
   resources :products
   resource :kiosk
-  root "kiosks#show"
+  root "teams#index"
 end

@@ -6,7 +6,7 @@ class ApplicationPolicy
     @resource = resource
   end
 
-  delegate :admin?, to: :user, allow_nil: true
+  delegate :admin?, :kiosk?, to: :user, allow_nil: true
 
   def show?
     admin?
