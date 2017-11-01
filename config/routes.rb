@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :payments, only: :create
     resources :invoices
   end
+  resources :invoice_lines
   resources :users
   resources :devices
   resources :products

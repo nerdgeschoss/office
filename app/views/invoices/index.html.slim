@@ -19,7 +19,10 @@
               .table__cell.table__cell--slim = line.user&.name || "-"
               .table__cell.table__cell--slim = number_to_currency line.price
               .table__cell.table__cell--slim = number_to_currency line.total
-              .table__cell.table__cell--slim = timeago_tag line.created_at
+              .table__cell.table__cell--slim
+                = timeago_tag line.created_at
+                - if policy(line).destroy?
+                  div = link_to t(".undo"), line, method: :delete
         .table_footer
           .table__row
             .table__cell
