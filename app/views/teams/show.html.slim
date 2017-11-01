@@ -19,7 +19,7 @@
             .table__cell.table__cell--selection
             .table__cell = user.name
             .table__cell = user.email
-  - if @team.open_invoice.lines.any?
+  - if @team.open_invoice.lines.any? || policy(@team).show_financial?
     = card :open_invoice, variant: :table
       .table
         .table__head
@@ -46,7 +46,9 @@
             .table__cell.table__cell--slim
             .table__cell.table__cell--slim
             .table__cell.table__cell--slim = number_to_currency @team.open_invoice.total
-            .table__cell.table__cell--slim = link_to t(".close_invoice"), invoice_path(@team.open_invoice), method: :patch, class: "button button--link"
+            .table__cell.table__cell--slim
+              - if policy(@team.open_invoice).update?
+                = link_to t(".close_invoice"), invoice_path(@team.open_invoice), method: :patch, class: "button button--link"
   - @subscription ||= @team.subscriptions.build
   - modal id: :add_subscription, show: @subscription.errors.any?
     = card :add_subscription
@@ -55,25 +57,26 @@
         = f.number_field :quantity, min: 1
         = f.datetime_field :next_renewal_at
         = f.submit_line
-  = card :subscriptions, variant: :table, actions: [add_if(:add_subscription, policy(@subscription).create?)]
-    .table
-      .table__head
-        .table__row
-          .table__cell = Product.model_name.human
-          .table__cell.table__cell--slim = Subscription.human_attribute_name :quantity
-          .table__cell.table__cell--slim = Subscription.human_attribute_name :interval
-          .table__cell.table__cell--slim = Subscription.human_attribute_name :next_renewal_at
-          .table__cell.table__cell--slim = Subscription.human_attribute_name :canceled_at
-      .table__body
-        - @team.subscriptions.select(&:persisted?).each do |subscription|
+  - if policy(@team).show_financial?
+    = card :subscriptions, variant: :table, actions: [add_if(:add_subscription, policy(@subscription).create?)]
+      .table
+        .table__head
           .table__row
-            .table__cell = subscription.product.name
-            .table__cell.table__cell--slim = subscription.quantity
-            .table__cell.table__cell--slim = subscription.interval
-            .table__cell.table__cell--slim = l subscription.next_renewal_at.to_date, format: :short
-            .table__cell.table__cell--slim
-              - if subscription.canceled?
-                = l subscription.canceled_at, format: :short
+            .table__cell = Product.model_name.human
+            .table__cell.table__cell--slim = Subscription.human_attribute_name :quantity
+            .table__cell.table__cell--slim = Subscription.human_attribute_name :interval
+            .table__cell.table__cell--slim = Subscription.human_attribute_name :next_renewal_at
+            .table__cell.table__cell--slim = Subscription.human_attribute_name :canceled_at
+        .table__body
+          - @team.subscriptions.select(&:persisted?).each do |subscription|
+            .table__row
+              .table__cell = subscription.product.name
+              .table__cell.table__cell--slim = subscription.quantity
+              .table__cell.table__cell--slim = subscription.interval
+              .table__cell.table__cell--slim = l subscription.next_renewal_at.to_date, format: :short
+              .table__cell.table__cell--slim
+                - if subscription.canceled?
+                  = l subscription.canceled_at, format: :short
   - @payment ||= @team.payments.new
   - modal id: :add_payment, show: @payment.errors.any?
     = card :add_payment
@@ -81,29 +84,32 @@
         = f.text_field :amount
         = f.text_field :subject
         = f.submit_line
-  = card :invoices, variant: :table
-    .table
-      .table__head
-        .table__row
-          .table__cell = Invoice.model_name.human
-          .table__cell.table__cell--slim = Invoice.human_attribute_name :total
-          .table__cell.table__cell--slim = Team.human_attribute_name :balance
-          .table__cell.table__cell--slim = Invoice.human_attribute_name :invoiced_at
-      .table__body
-        - balance = 0
-        - @team.invoices_and_payments.each do |doc|
-          - balance += doc.accounting_amount
+  - if policy(@team).show_financial?
+    = card :invoices, variant: :table
+      .table
+        .table__head
           .table__row
-            .table__cell = doc.is_a?(Payment) ? doc.subject : doc.id
+            .table__cell = Invoice.model_name.human
+            .table__cell.table__cell--slim = Invoice.human_attribute_name :total
+            .table__cell.table__cell--slim = Team.human_attribute_name :balance
+            .table__cell.table__cell--slim = Invoice.human_attribute_name :invoiced_at
+        .table__body
+          - balance = 0
+          - @team.invoices_and_payments.each do |doc|
+            - balance += doc.accounting_amount
+            .table__row
+              .table__cell = doc.is_a?(Payment) ? doc.subject : doc.id
+              .table__cell.table__cell--slim
+                = number_to_accounting doc.accounting_amount
+                - if doc.is_a? Invoice
+                  small = t ".price_plus_vat", price: number_to_currency(doc.total), vat: number_to_currency(doc.vat)
+              .table__cell.table__cell--slim = number_to_accounting balance
+              .table__cell.table__cell--slim = l doc.created_at.to_date, format: :short
+        .table__foot
+          .table__row
+            .table__cell
             .table__cell.table__cell--slim
-              = number_to_accounting doc.accounting_amount
-              - if doc.is_a? Invoice
-                small = t ".price_plus_vat", price: number_to_currency(doc.total), vat: number_to_currency(doc.vat)
             .table__cell.table__cell--slim = number_to_accounting balance
-            .table__cell.table__cell--slim = l doc.created_at.to_date, format: :short
-      .table__foot
-        .table__row
-          .table__cell
-          .table__cell.table__cell--slim
-          .table__cell.table__cell--slim = number_to_accounting balance
-          .table__cell.table__cell--slim: label.button.button--link for=:add_payment = t(".add_payment")
+            .table__cell.table__cell--slim
+              - if policy(Payment).create?
+                label.button.button--link for=:add_payment = t(".add_payment")

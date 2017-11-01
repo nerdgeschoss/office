@@ -12,10 +12,12 @@
         .table__row
           .table__cell.table__cell--selection
           .table__cell = Team.human_attribute_name :name
-          .table__cell = Team.human_attribute_name :balance
+          - if policy(Team).financial_overview?
+            .table__cell = Team.human_attribute_name :balance
       .table__body
         - @teams.each do |team|
           a.table__row href=team_path(team)
             .table__cell.table__cell--selection
             .table__cell = team.name
-            .table__cell = number_to_accounting team.balance
+            - if policy(Team).financial_overview?
+              .table__cell = number_to_accounting team.balance
