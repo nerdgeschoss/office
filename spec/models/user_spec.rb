@@ -27,6 +27,7 @@
 #  invitation_limit       :integer
 #  invited_by_id          :integer
 #  invited_by_type        :string
+#  roles                  :string           default([]), is an Array
 #
 
 require "rails_helper"

@@ -2,13 +2,14 @@
 #
 # Table name: teams
 #
-#  id              :uuid             not null, primary key
-#  name            :string           not null
-#  billing_address :jsonb
-#  slug            :string           not null
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  website         :string
+#  id                      :uuid             not null, primary key
+#  name                    :string           not null
+#  billing_address         :jsonb
+#  slug                    :string           not null
+#  created_at              :datetime         not null
+#  updated_at              :datetime         not null
+#  website                 :string
+#  generate_invoice_number :boolean          default(TRUE), not null
 #
 
 require "rails_helper"
