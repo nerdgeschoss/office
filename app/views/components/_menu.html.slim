@@ -1,7 +1,7 @@
 .menu__header
   label.menu__close for="menu"
     = icon "menu/close"
-  a href=root_path = image_tag "logo.svg"
+  a href=root_path = image_tag "logo.svg", class: "menu__logo"
 .menu__header__spacer
 .menu__items
   - MenuItem.restricted(current_user).each do |item|

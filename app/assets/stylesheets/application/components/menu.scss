@@ -16,6 +16,10 @@
     position: absolute;
   }
 
+  &__logo {
+    max-height: $size-navbar - 20px;
+  }
+
   &__close {
     margin-right: 1em;
 
