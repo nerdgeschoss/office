@@ -1,5 +1,11 @@
 ---
 en:
   invoices:
+    index:
+      add_payment: Add payment
+      close_invoice: Close invoice
+      open_invoice: Open invoice
+      price_plus_vat: "%{price} + %{vat} VAT"
+      undo: Undo
     show:
-      purchased_by: "purchased by %{user}"
+      purchased_by: purchased by %{user}

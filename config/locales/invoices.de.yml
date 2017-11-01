@@ -1,5 +1,11 @@
 ---
 de:
   invoices:
+    index:
+      add_payment: Zahlung hinzufügen
+      close_invoice: Rechnung schließen
+      open_invoice: Offene Rechnung
+      price_plus_vat: "%{price} + %{vat} MwSt"
+      undo: entfernen
     show:
-      purchased_by: "gekauft von %{user}"
+      purchased_by: gekauft von %{user}

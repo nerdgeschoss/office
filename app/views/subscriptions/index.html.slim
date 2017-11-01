@@ -9,7 +9,7 @@
         = f.datetime_field :next_renewal_at
         = f.submit_line
   - if policy(@team).show_financial?
-    = card :subscriptions, variant: :table, actions: [add_if(:add_subscription, policy(@subscription).create?)]
+    = card Subscription.model_name.human(count: 3), variant: :table, actions: [add_if(:add_subscription, policy(@subscription).create?)]
       .table
         .table__head
           .table__row

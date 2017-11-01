@@ -2,17 +2,9 @@
 de:
   teams:
     head:
-      edit_team: Edit team
+      edit_team: Team bearbeiten
     index:
       create_team: Team erstellen
       teams: Teams
     show:
-      add_payment: Zahlung hinzufügen
-      add_subscription: Abo hinzufügen
-      close_invoice: Rechnung stellen
-      edit_team: Team bearbeiten
-      invoices: Rechnungen
       members: Mitglieder
-      open_invoice: Offene Rechnung
-      price_plus_vat: "%{price} + %{vat} MwSt"
-      subscriptions: Abos

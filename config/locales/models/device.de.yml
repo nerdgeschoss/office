@@ -4,10 +4,9 @@ de:
     attributes:
       device:
         last_activity_at: letzte Aktivität
-        mac_address: Mac address
+        mac_address: Macadresse
         name: Name
-        user_agent: User agent
     models:
       device:
-        one: One
-        other: Other
+        one: Gerät
+        other: Geräte

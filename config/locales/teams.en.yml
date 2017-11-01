@@ -7,12 +7,4 @@ en:
       create_team: Create team
       teams: Teams
     show:
-      add_payment: Add payment
-      add_subscription: Add subscription
-      close_invoice: Close invoice
-      edit_team: Edit team
-      invoices: Invoices
       members: Members
-      open_invoice: Open invoice
-      price_plus_vat: "%{price} + %{vat} VAT"
-      subscriptions: Subscriptions

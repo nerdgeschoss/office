@@ -10,6 +10,6 @@
       .table__body
         - @team.users.without_role(:kiosk).each do |user|
           a.table__row href=user_path(user)
-            .table__cell.table__cell--selection
+            .table__cell.table__cell--selection = avatar user
             .table__cell = user.name
             .table__cell = user.email
