@@ -10,14 +10,16 @@
     .table
       .table__head
         .table__row
-          .table__cell.table__cell--selection
+          .table__cell.table__cell--slim
           .table__cell = Team.human_attribute_name :name
           - if policy(Team).financial_overview?
             .table__cell = Team.human_attribute_name :balance
       .table__body
         - @teams.each do |team|
           a.table__row href=team_path(team)
-            .table__cell.table__cell--selection
+            .table__cell.table__cell--slim: .stack
+              - team.users.each do |user|
+                = avatar user
             .table__cell = team.name
             - if policy(Team).financial_overview?
               .table__cell = number_to_accounting team.balance

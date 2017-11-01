@@ -1,0 +1,21 @@
+.stack {
+  position: relative;
+  width: 100px;
+  height: 50px;
+
+  > :first-child {
+    position: relative;
+  }
+
+  > * {
+    top: 0;
+    position: absolute;
+    width: 50px;
+  }
+
+  @for $i from 1 through 4 {
+    :nth-child(#{$i + 1}) {
+      left: $i * 20px;
+    }
+  }
+}
