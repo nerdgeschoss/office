@@ -8,7 +8,7 @@ class MenuItemPolicy < ApplicationPolicy
   end
 
   def kiosk?
-    true
+    admin?
   end
 
   def products?
