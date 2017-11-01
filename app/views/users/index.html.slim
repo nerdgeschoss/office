@@ -4,11 +4,10 @@
   = card :invite_user
     = awesome_form_for @user do |f|
       = f.collection_select :team_id, Team.all, :id, :name
-      = f.text_field :first_name
-      = f.text_field :last_name
+      .line
+        = f.text_field :first_name
+        = f.text_field :last_name
       = f.text_field :email
-      = f.password_field :password
-      = f.password_field :password_confirmation
       = f.submit_line
 .container
   = card :users, variant: :table, actions: [add_if(:create_user, policy(@user).create?)]

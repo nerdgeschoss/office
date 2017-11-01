@@ -17,22 +17,8 @@ class ApplicationController < ActionController::Base
     {}
   end
 
-  def current_device
-    return unless current_user
-    @current_device ||= begin
-      device = nil
-      if session[:device_id].nil?
-        device = current_user.devices.create! user_agent: request.user_agent
-        session[:device_id] = device.id
-      else
-        device = current_user.devices.find_by(id: session[:device_id])
-      end
-      device
-    end
-  end
-
   def track_activity
-    current_device&.touch(:last_activity_at)
+    current_user&.touch(:last_activity_at)
   end
 
   def determine_layout

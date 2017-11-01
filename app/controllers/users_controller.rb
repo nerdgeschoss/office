@@ -18,13 +18,19 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = authorize User.new user_params
+    @user = authorize User.new invite_params
     if @user.save
+      @user.invite!(current_user)
       redirect_to @user
     else
       index
       render :index
     end
+  end
+
+  def destroy
+    @user.destroy
+    redirect_to users_path
   end
 
   private
@@ -33,7 +39,11 @@ class UsersController < ApplicationController
     @user = authorize User.friendly.find(params[:id])
   end
 
+  def invite_params
+    params.require(:user).permit(:first_name, :last_name, :email, :team_id)
+  end
+
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :team_id, :password, :password_confirmation)
+    params.require(:user).permit(:first_name, :last_name, :password, :password_confirmation)
   end
 end

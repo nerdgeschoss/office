@@ -16,10 +16,10 @@ class MenuItemPolicy < ApplicationPolicy
   end
 
   def teams?
-    admin?
+    true
   end
 
   def users?
-    admin?
+    true
   end
 end

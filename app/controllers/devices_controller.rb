@@ -1,6 +1,16 @@
 class DevicesController < ApplicationController
   before_action :load_device, except: [:index, :create]
 
+  def create
+    @device = authorize Device.new device_params
+    if @device.save
+      redirect_to @device.user
+    else
+      @user = User.find(device_params[:user_id])
+      render "users#show"
+    end
+  end
+
   def destroy
     @device.destroy
     redirect_to @device.user
@@ -13,6 +23,6 @@ class DevicesController < ApplicationController
   end
 
   def device_params
-    params.require(:device).permit(:name)
+    params.require(:device).permit(:name, :user_id, :mac_address)
   end
 end

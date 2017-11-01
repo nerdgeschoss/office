@@ -29,6 +29,7 @@ gem "pundit", github: "elabs/pundit", branch: "master"
 gem "search_cop"
 gem "document_serializable", "~> 0.2", git: "https://github.com/nerdgeschoss/document_serializable.git"
 gem "devise"
+gem "devise_invitable"
 gem "http_accept_language"
 gem "nested_form"
 

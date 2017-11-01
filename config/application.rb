@@ -26,5 +26,8 @@ module Office
 
     config.autoload_paths << Rails.root.join("app", "policies")
     config.i18n.load_path += Dir[Rails.root.join("config", "locales", "**", "*.{rb,yml}").to_s]
+
+    config.action_mailer.default_url_options = { host: ENV["HOST"] } if ENV["HOST"].present?
+    config.action_mailer.default_url_options = { host: "#{ENV['HEROKU_APP_NAME']}.herokuapp.com" } if ENV["HEROKU_APP_NAME"].present?
   end
 end

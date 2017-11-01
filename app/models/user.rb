@@ -25,10 +25,11 @@ class User < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
 
-  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :invitable
 
   belongs_to :team
   has_many :devices, dependent: :destroy
+  has_many :invoice_lines, dependent: :nullify, foreign_key: :ordered_by_id
 
   validates :first_name, :last_name, :email, :team_id, presence: true
 
@@ -37,7 +38,7 @@ class User < ApplicationRecord
   end
 
   def admin?
-    email.to_s.include? "@nerdgeschoss.de"
+    email.to_s.ends_with? "@nerdgeschoss.de"
   end
 
   def avatar_url(size = 80)
@@ -45,7 +46,7 @@ class User < ApplicationRecord
     "https://www.gravatar.com/avatar/#{hash}?d=mm&s=#{size}"
   end
 
-  def last_activity_at
-    devices.maximum(:last_activity_at)
+  def password_required?
+    false
   end
 end
