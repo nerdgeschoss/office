@@ -2,6 +2,7 @@
 de:
   users:
     index:
+      invite_pending: Einladung ausstehend
       invite_user: Nutzer einladen
       users: Nutzer
     show:

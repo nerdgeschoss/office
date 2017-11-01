@@ -24,7 +24,9 @@
             .table__cell.table__cell--selection = avatar user
             .table__cell
               div = user.name
-              small.text_muted = user.team.name
+              small = user.team.name
+              - if user.invite_pending?
+                div: small.muted = t ".invite_pending"
             .table__cell = user.email
             .table__cell
               - if user.last_activity_at

@@ -58,6 +58,10 @@ class User < ApplicationRecord
     roles.include? "kiosk"
   end
 
+  def invite_pending?
+    encrypted_password.blank?
+  end
+
   def avatar_url(size = 80)
     hash = Digest::MD5.hexdigest(email.to_s.downcase)
     "https://www.gravatar.com/avatar/#{hash}?d=mm&s=#{size}"
