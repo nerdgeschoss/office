@@ -41,6 +41,10 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, :email, :team_id, presence: true
 
+  scope :with_role, ->(role) { where "? = ANY(users.roles)", role.to_s }
+  scope :without_role, ->(role) { where "? != ANY(users.roles)", role.to_s }
+  scope :visible_in_kiosk, -> { without_role :kiosk }
+
   def name
     [first_name, last_name].join(" ")
   end

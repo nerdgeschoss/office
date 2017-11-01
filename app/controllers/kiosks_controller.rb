@@ -1,6 +1,6 @@
 class KiosksController < ApplicationController
   def show
-    @users = User.all
+    @users = User.visible_in_kiosk
     @products = Product.available_in_kiosk
   end
 
