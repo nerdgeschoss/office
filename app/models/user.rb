@@ -46,7 +46,11 @@ class User < ApplicationRecord
   end
 
   def admin?
-    email.to_s.ends_with? "@nerdgeschoss.de"
+    roles.include? "admin"
+  end
+
+  def kiosk?
+    roles.include? "kiosk"
   end
 
   def avatar_url(size = 80)

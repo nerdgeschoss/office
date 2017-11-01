@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :set_locale
   before_action :track_activity
+  before_action :redirect_kiosk
 
   private
 
@@ -23,6 +24,11 @@ class ApplicationController < ActionController::Base
 
   def determine_layout
     return "authentication" if devise_controller?
+    return "kiosk" if current_user&.kiosk?
     "application"
+  end
+
+  def redirect_kiosk
+    redirect_to kiosk_path if current_user&.kiosk? && controller_name != "kiosks"
   end
 end

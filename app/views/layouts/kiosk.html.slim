@@ -1,0 +1,13 @@
+doctype html
+html
+  = render "layouts/head"
+  body class=("test" if Rails.env.test?) lang=I18n.locale
+    - @page_modals&.values&.each do |modal|
+      == modal
+    .workspace
+      .workspace__content
+        - if flash.any?
+          .container
+            - flash.each do |key, value|
+              .alert class="alert--#{key}" = value
+        = yield
