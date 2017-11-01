@@ -1,12 +1,16 @@
 class SubscriptionsController < ApplicationController
   before_action :load_subscription, except: [:index, :create]
 
+  def index
+    @team = team
+  end
+
   def create
     @subscription = authorize team.subscriptions.new subscription_params
     if @subscription.save
-      redirect_to team
+      redirect_to team_subscriptions_path(team)
     else
-      render "teams/show"
+      render :index
     end
   end
 

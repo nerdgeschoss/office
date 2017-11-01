@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   resources :teams do
     resources :subscriptions
     resources :payments, only: :create
+    resources :invoices
   end
-  resources :invoices
   resources :users
   resources :devices
   resources :products

@@ -5,3 +5,10 @@
       = f.text_field :name
       = f.submit_line
 = header team.name, components: [edit_if(:edit_team, policy(team).update?)]
+.tabs
+  .container
+    .tabs__group
+      = tab Team.model_name.human, path: team_path(team)
+      - if policy(team).show_financial?
+        = tab Subscription.model_name.human(count: 3), path: team_subscriptions_path(team)
+        = tab Invoice.model_name.human(count: 3), path: team_invoices_path(team)

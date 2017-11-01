@@ -1,0 +1,30 @@
+= render "teams/head", team: @team
+.container
+  - @subscription ||= @team.subscriptions.build
+  - modal id: :add_subscription, show: @subscription.errors.any?
+    = card :add_subscription
+      = awesome_form_for [@team, @subscription] do |f|
+        = f.collection_select :product_id, Product.active, :id, :name
+        = f.number_field :quantity, min: 1
+        = f.datetime_field :next_renewal_at
+        = f.submit_line
+  - if policy(@team).show_financial?
+    = card :subscriptions, variant: :table, actions: [add_if(:add_subscription, policy(@subscription).create?)]
+      .table
+        .table__head
+          .table__row
+            .table__cell = Product.model_name.human
+            .table__cell.table__cell--slim = Subscription.human_attribute_name :quantity
+            .table__cell.table__cell--slim = Subscription.human_attribute_name :interval
+            .table__cell.table__cell--slim = Subscription.human_attribute_name :next_renewal_at
+            .table__cell.table__cell--slim = Subscription.human_attribute_name :canceled_at
+        .table__body
+          - @team.subscriptions.select(&:persisted?).each do |subscription|
+            .table__row
+              .table__cell = subscription.product.name
+              .table__cell.table__cell--slim = subscription.quantity
+              .table__cell.table__cell--slim = subscription.interval
+              .table__cell.table__cell--slim = l subscription.next_renewal_at.to_date, format: :short
+              .table__cell.table__cell--slim
+                - if subscription.canceled?
+                  = l subscription.canceled_at, format: :short

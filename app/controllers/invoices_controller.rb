@@ -1,12 +1,16 @@
 class InvoicesController < ApplicationController
-  before_action :load_invoice
+  before_action :load_invoice, except: :index
+
+  def index
+    @team = authorize Team.friendly.find(params[:team_id]), :show_financial?
+  end
 
   def show
   end
 
   def update
     @invoice.close!
-    redirect_to @invoice.team
+    redirect_to team_invoices_path(@invoice.team)
   end
 
   private

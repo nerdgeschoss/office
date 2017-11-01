@@ -1,0 +1,73 @@
+= render "teams/head", team: @team
+.container
+  - if @team.open_invoice.lines.any?
+    = card :open_invoice, variant: :table
+      .table
+        .table__head
+          .table__row
+            .table__cell = Product.model_name.human
+            .table__cell.table__cell--slim = InvoiceLine.human_attribute_name :quantity
+            .table__cell.table__cell--slim = InvoiceLine.human_attribute_name :user
+            .table__cell.table__cell--slim = InvoiceLine.human_attribute_name :price
+            .table__cell.table__cell--slim = InvoiceLine.human_attribute_name :total
+            .table__cell.table__cell--slim = InvoiceLine.human_attribute_name :purchased_at
+        .table__body
+          - @team.open_invoice.lines.each do |line|
+            .table__row
+              .table__cell = line.product.name
+              .table__cell.table__cell--slim = line.quantity
+              .table__cell.table__cell--slim = line.user&.name || "-"
+              .table__cell.table__cell--slim = number_to_currency line.price
+              .table__cell.table__cell--slim = number_to_currency line.total
+              .table__cell.table__cell--slim = timeago_tag line.created_at
+        .table_footer
+          .table__row
+            .table__cell
+            .table__cell.table__cell--slim
+            .table__cell.table__cell--slim
+            .table__cell.table__cell--slim
+            .table__cell.table__cell--slim = number_to_currency @team.open_invoice.total
+            .table__cell.table__cell--slim
+              - if policy(@team.open_invoice).update? && @team.open_invoice.total > 0
+                = link_to t(".close_invoice"), team_invoice_path(@team, @team.open_invoice), method: :patch, class: "button button--link"
+
+  - @payment ||= @team.payments.new
+  - modal id: :add_payment, show: @payment.errors.any?
+    = card :add_payment
+      = awesome_form_for [@team, @payment] do |f|
+        = f.text_field :amount
+        = f.text_field :subject
+        = f.date_field :created_at
+        = f.submit_line
+  = card :invoices, variant: :table, actions: [add_if(:add_payment, policy(Payment).create?)]
+    .table
+      .table__head
+        .table__row
+          .table__cell = Invoice.model_name.human
+          .table__cell.table__cell--slim = Invoice.human_attribute_name :total
+          .table__cell.table__cell--slim = Team.human_attribute_name :balance
+          .table__cell.table__cell--slim = Invoice.human_attribute_name :invoiced_at
+      .table__body
+        - balance = 0
+        - @team.invoices_and_payments.each do |doc|
+          - balance += doc.accounting_amount
+          .table__row
+            - if doc.is_a?(Payment)
+              .table__cell = doc.subject
+              .table__cell.table__cell--slim
+                = number_to_accounting doc.accounting_amount
+              .table__cell.table__cell--slim = number_to_accounting balance
+              .table__cell.table__cell--slim = l doc.created_at.to_date, format: :short
+            - else
+              .table__cell = link_to doc.id, team_invoice_path(@team, doc)
+              .table__cell.table__cell--slim
+                = number_to_accounting doc.accounting_amount
+                small = t ".price_plus_vat", price: number_to_currency(doc.total), vat: number_to_currency(doc.vat)
+              .table__cell.table__cell--slim = number_to_accounting balance
+              .table__cell.table__cell--slim = l doc.created_at.to_date, format: :short
+      .table__foot
+        .table__row
+          .table__cell
+          .table__cell.table__cell--slim
+          .table__cell.table__cell--slim = number_to_accounting balance
+          .table__cell.table__cell--slim
