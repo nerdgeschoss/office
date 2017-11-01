@@ -44,6 +44,7 @@ class User < ApplicationRecord
   scope :with_role, ->(role) { where "? = ANY(users.roles)", role.to_s }
   scope :without_role, ->(role) { where "? != ANY(users.roles)", role.to_s }
   scope :visible_in_kiosk, -> { without_role :kiosk }
+  scope :alphabetical, -> { order(first_name: :asc, last_name: :asc) }
 
   def name
     [first_name, last_name].join(" ")

@@ -1,7 +1,7 @@
 class KiosksController < ApplicationController
   def show
     authorize :kiosk
-    @users = User.visible_in_kiosk
+    @users = User.visible_in_kiosk.alphabetical
     @products = Product.available_in_kiosk.alphabetical
   end
 
