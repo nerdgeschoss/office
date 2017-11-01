@@ -23,4 +23,9 @@ module FormattingHelper
   def image_data_url(blob)
     "data:image/svg+xml;base64,#{Base64.encode64(blob)}"
   end
+
+  def website_url(path)
+    path = "http://#{path}" unless path.start_with?("http")
+    path
+  end
 end

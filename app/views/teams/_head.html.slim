@@ -3,8 +3,11 @@
   = card :edit_team
     = awesome_form_for team do |f|
       = f.text_field :name
+      = f.text_field :website
       = f.submit_line
-= header team.name, components: [edit_if(:edit_team, policy(team).update?)]
+- components = []
+- components.unshift link_to team.website, website_url(team.website), target: "new" if team.website.present?
+= header team.name, components: components
 .tabs
   .container
     .tabs__group
@@ -12,3 +15,5 @@
       - if policy(team).show_financial?
         = tab Subscription.model_name.human(count: 3), path: team_subscriptions_path(team)
         = tab Invoice.model_name.human(count: 3), path: team_invoices_path(team)
+    .tabs_group
+      .tabs__tab: label for=:edit_team = icon(:edit, size: :small)

@@ -11,6 +11,10 @@ class TeamPolicy < ApplicationPolicy
     admin?
   end
 
+  def update?
+    admin? || member?
+  end
+
   def member?
     user.team_id == resource.id
   end
