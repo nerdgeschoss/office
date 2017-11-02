@@ -3,9 +3,25 @@
   flex-direction: column;
   align-items: center;
   width: 120px;
+  position: relative;
 
   &__image {
     width: 60px;
     height: 60px;
+  }
+
+  &__button {
+    display: none;
+  }
+
+  &__price {
+    position: absolute;
+    right:  0;
+    top: 0;
+    background-color: $color-tint;
+    color: white;
+    border-radius: 15px;
+    padding: 2px 5px;
+    z-index: $z-elevated;
   }
 }

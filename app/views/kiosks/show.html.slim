@@ -13,6 +13,7 @@
       .line.line--wrap
         - @products.each do |product|
           label.product
+            .product__price = number_to_currency product.price
             .product__image = avatar product
             .product__name = product.name
             = f.button t(".buy"), value: product.id, class: "button product__button"
