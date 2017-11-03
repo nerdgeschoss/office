@@ -17,5 +17,5 @@ Rails.application.routes.draw do
     end
   end
 
-  root "teams#index"
+  root "dashboards#show"
 end

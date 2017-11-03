@@ -5,6 +5,7 @@ en:
       user:
         email: Email
         last_activity_at: Last activity at
+        last_time_in_office: Last time in office
         name: Name
     models:
       user:

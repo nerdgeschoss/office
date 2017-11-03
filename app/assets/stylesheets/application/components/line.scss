@@ -21,6 +21,12 @@
     }
   }
 
+  &--fill {
+    > * {
+      flex: 1;
+    }
+  }
+
   &--left {
     justify-content: flex-start;
   }

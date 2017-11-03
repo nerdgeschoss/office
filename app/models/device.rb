@@ -15,7 +15,9 @@
 class Device < ApplicationRecord
   belongs_to :user
 
+  scope :in_office, -> { where("devices.last_activity_at >= ?", 2.minutes.ago) }
+
   def in_office?
-    last_activity_at > 5.minutes.ago
+    last_activity_at > 2.minutes.ago
   end
 end

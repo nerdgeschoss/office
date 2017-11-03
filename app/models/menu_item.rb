@@ -5,7 +5,7 @@ class MenuItemBuilder
   end
 
   def build
-    [kiosk, teams, users]
+    [dashboard, kiosk, teams, users]
   end
 
   private

@@ -1,0 +1,28 @@
+- title t(".today")
+= header t(".today")
+.container: .line.line--fill
+  = card :recent_purchases, variant: :table
+    .table.table--sticky-header
+      .table__head
+        .table__row
+          .table__cell = Product.model_name.human
+          .table__cell.table__cell--slim = InvoiceLine.human_attribute_name :quantity
+          .table__cell.table__cell--slim = InvoiceLine.human_attribute_name :total
+          .table__cell.table__cell--slim = InvoiceLine.human_attribute_name :purchased_at
+      .table__body
+        - @recent_purchases.each do |line|
+          .table__row
+            .table__cell = line.product.name
+            .table__cell.table__cell--slim = line.quantity
+            .table__cell.table__cell--slim = number_to_currency line.total
+            .table__cell.table__cell--slim
+              = timeago_tag line.created_at
+              - if policy(line).destroy?
+                .muted = link_to t(".undo"), line, method: :delete
+  = card :currently_in_the_office
+    .line.line--left.line--wrap
+      - @currently_in_office.each do |user|
+        label.center
+          = avatar user, size: :small
+          div = user.name
+          small = user.team.name

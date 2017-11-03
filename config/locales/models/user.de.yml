@@ -5,6 +5,7 @@ de:
       user:
         email: Email
         last_activity_at: zuletzt aktiv
+        last_time_in_office: zuletzt im Büro
         name: Name
     models:
       user:

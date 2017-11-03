@@ -19,6 +19,8 @@ class InvoiceLine < ApplicationRecord
   belongs_to :invoice
   belongs_to :user, foreign_key: :ordered_by_id, required: false
 
+  scope :today, -> { where("invoice_lines.created_at >= ?", DateTime.current.beginning_of_day) }
+
   before_validation do
     self.price ||= product.price
     self.vat ||= product.vat

@@ -46,6 +46,7 @@ class User < ApplicationRecord
   scope :without_role, ->(role) { where "users.roles = '{}' OR ? != ANY(users.roles)", role.to_s }
   scope :visible_in_kiosk, -> { without_role :kiosk }
   scope :alphabetical, -> { order(first_name: :asc, last_name: :asc) }
+  scope :in_office, -> { where id: Device.in_office.select(:user_id) }
 
   def name
     [first_name, last_name].join(" ")
