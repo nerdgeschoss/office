@@ -14,4 +14,8 @@
 
 class Device < ApplicationRecord
   belongs_to :user
+
+  def in_office?
+    last_activity_at > 5.minutes.ago
+  end
 end

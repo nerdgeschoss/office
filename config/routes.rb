@@ -10,5 +10,12 @@ Rails.application.routes.draw do
   resources :devices
   resources :products
   resource :kiosk
+
+  namespace :api do
+    namespace :hooks do
+      post "online_devices", to: "devices#online"
+    end
+  end
+
   root "teams#index"
 end

@@ -18,6 +18,7 @@
           .table__cell = User.human_attribute_name :name
           .table__cell = User.human_attribute_name :email
           .table__cell = User.human_attribute_name :last_activity_at
+          .table__cell = User.human_attribute_name :last_time_in_office
       .table__body
         - @users.each do |user|
           a.table__row href=user_path(user)
@@ -31,3 +32,6 @@
             .table__cell
               - if user.last_activity_at
                 = timeago_tag user.last_activity_at
+            .table__cell
+              - if user.last_time_in_office
+                = timeago_tag user.last_time_in_office
