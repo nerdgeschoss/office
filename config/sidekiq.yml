@@ -2,3 +2,6 @@
   perform_subscriptions:
     every: "1m"
     class: PerformSubscriptionsJob
+  close_time_tracking:
+    every: "1m"
+    class: FinishTimeTrackingJob

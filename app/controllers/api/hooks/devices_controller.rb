@@ -2,7 +2,8 @@ module API
   module Hooks
     class DevicesController < HooksController
       def online
-        Device.where(mac_address: params[:mac_addresses].to_a).update_all last_activity_at: DateTime.current
+        addresses = params[:mac_addresses].to_a
+        Device.where(mac_address: addresses).each(&:track_activity)
       end
     end
   end

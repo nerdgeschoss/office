@@ -7,6 +7,10 @@ class UserPolicy < ApplicationPolicy
     admin? || resource == user
   end
 
+  def show_presence?
+    admin? || resource == user
+  end
+
   class Scope < Scope
     def resolve
       scope.all

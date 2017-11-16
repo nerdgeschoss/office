@@ -11,6 +11,11 @@ class DevicesController < ApplicationController
     end
   end
 
+  def update
+    @device.update! device_params
+    redirect_to @device.user
+  end
+
   def destroy
     @device.destroy
     redirect_to @device.user
@@ -23,6 +28,6 @@ class DevicesController < ApplicationController
   end
 
   def device_params
-    params.require(:device).permit(:name, :user_id, :mac_address)
+    params.require(:device).permit(:name, :user_id, :mac_address, :track_time)
   end
 end

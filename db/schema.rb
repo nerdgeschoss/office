@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171101192137) do
-
+ActiveRecord::Schema.define(version: 20171116171923) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "pgcrypto"
@@ -21,9 +20,11 @@ ActiveRecord::Schema.define(version: 20171101192137) do
     t.string "mac_address"
     t.string "name"
     t.string "user_agent"
-    t.datetime "last_activity_at", default: "2017-10-25 13:10:45", null: false
+    t.datetime "last_activity_at", default: "2017-10-26 16:08:47", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "track_time", default: false, null: false
+    t.index ["track_time"], name: "index_devices_on_track_time"
   end
 
   create_table "invoice_lines", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -58,6 +59,16 @@ ActiveRecord::Schema.define(version: 20171101192137) do
     t.string "subject"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "presence_times", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.datetime "start_at", null: false
+    t.datetime "end_at"
+    t.uuid "device_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["device_id"], name: "index_presence_times_on_device_id"
+    t.index ["end_at"], name: "index_presence_times_on_end_at"
   end
 
   create_table "products", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -100,7 +111,7 @@ ActiveRecord::Schema.define(version: 20171101192137) do
     t.datetime "updated_at", null: false
     t.string "website"
     t.boolean "generate_invoice_number", default: true, null: false
-    t.index ["slug"], name: "index_teams_on_slug"
+    t.index ["slug"], name: "index_teams_on_slug", unique: true
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -131,7 +142,7 @@ ActiveRecord::Schema.define(version: 20171101192137) do
     t.string "roles", default: [], array: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["slug"], name: "index_users_on_slug"
+    t.index ["slug"], name: "index_users_on_slug", unique: true
   end
 
   add_foreign_key "devices", "users"
@@ -140,6 +151,7 @@ ActiveRecord::Schema.define(version: 20171101192137) do
   add_foreign_key "invoice_lines", "users", column: "ordered_by_id"
   add_foreign_key "invoices", "teams"
   add_foreign_key "payments", "teams"
+  add_foreign_key "presence_times", "devices"
   add_foreign_key "subscriptions", "products"
   add_foreign_key "subscriptions", "teams"
   add_foreign_key "users", "teams"

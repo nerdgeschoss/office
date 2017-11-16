@@ -16,6 +16,7 @@
       = f.hidden_field :user_id
       = f.text_field :name
       = f.text_field :mac_address
+      = f.check_box :track_time
       = f.submit_line
 = header @user.name, components: [link_to(@user.team.name, @user.team), mail_to(@user.email), edit_if(:edit_user, policy(@user).update?) ], aside: avatar(@user)
 .container
@@ -26,14 +27,40 @@
           .table__row
             .table__cell.table__cell--wide = Device.human_attribute_name :name
             .table__cell = Device.human_attribute_name :mac_address
+            .table__cell.table__cell--selection = Device.human_attribute_name :track_time
             .table__cell.table__cell--slim = Device.human_attribute_name :last_activity_at
-            .table__cell.table__cell--selection
+            .table__cell.table__cell--slim
         .table__body
           - @user.devices.select(&:persisted?).each do |device|
+            - modal id: device.id, show: device.errors.any?
+              = card :edit_device
+                = awesome_form_for device do |f|
+                  = f.hidden_field :user_id
+                  = f.text_field :name
+                  = f.text_field :mac_address
+                  = f.check_box :track_time
+                  = f.submit_line
             .table__row
               .table__cell.table__cell--wide = device.name
               .table__cell = device.mac_address
+              .table__cell.table__cell--selection = device.track_time? ? "x" : ""
               .table__cell.table__cell--slim = timeago_tag device.last_activity_at
-              .table__cell.table__cell--selection
+              .table__cell.table__cell--slim.line
+                - if policy(device).edit?
+                  label for=device.id = icon(:edit)
                 - if policy(device).destroy?
                   = link_to icon(:trash), device, method: :delete
+  - if policy(@user).show_presence?
+    = card :times, variant: :table
+      .table
+        .table__head
+          .table__row
+            .table__cell = PresenceTime.human_attribute_name :start_at
+            .table__cell = PresenceTime.human_attribute_name :end_at
+            .table__cell = PresenceTime.human_attribute_name :duration
+        .table__body
+          - @user.presence_times.each do |time|
+            .table__row
+              .table__cell = l time.start_at, format: :short
+              .table__cell = l time.end_at, format: :short if time.end_at
+              .table__cell = distance_of_time_in_words time.duration

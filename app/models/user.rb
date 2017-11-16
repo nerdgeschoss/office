@@ -38,6 +38,7 @@ class User < ApplicationRecord
 
   belongs_to :team
   has_many :devices, dependent: :destroy
+  has_many :presence_times, through: :devices, dependent: false
   has_many :invoice_lines, dependent: :nullify, foreign_key: :ordered_by_id
 
   validates :first_name, :last_name, :email, :team_id, presence: true

@@ -42,6 +42,9 @@ Layout/AlignParameters:
 Style/ConditionalAssignment:
   Enabled: false
 
+Style/DateTime:
+  Enabled: false
+
 Style/Documentation:
   Enabled: false
 
