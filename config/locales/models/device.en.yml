@@ -6,6 +6,7 @@ en:
         last_activity_at: Last activity at
         mac_address: Mac address
         name: Name
+        track_time: Track time
     models:
       device:
         one: Device

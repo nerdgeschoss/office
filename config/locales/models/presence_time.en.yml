@@ -1,0 +1,12 @@
+---
+en:
+  activerecord:
+    attributes:
+      presence_time:
+        duration: Duration
+        end_at: End at
+        start_at: Start at
+    models:
+      presence_time:
+        one: Time
+        other: Times

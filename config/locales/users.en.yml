@@ -9,4 +9,6 @@ en:
       create_device: Create device
       delete_user: Delete user
       devices: Devices
+      edit_device: Edit device
       edit_user: Edit user
+      times: Times

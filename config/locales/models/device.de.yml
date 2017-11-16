@@ -6,6 +6,7 @@ de:
         last_activity_at: letzte Aktivität
         mac_address: Macadresse
         name: Name
+        track_time: Zeit erfassen
     models:
       device:
         one: Gerät

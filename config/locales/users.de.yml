@@ -9,4 +9,6 @@ de:
       create_device: Gerät hinzufügen
       delete_user: Nutzer löschen
       devices: Geräte
+      edit_device: Gerät bearbeiten
       edit_user: Nutzer bearbeiten
+      times: Zeiterfassung
