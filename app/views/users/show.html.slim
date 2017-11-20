@@ -63,4 +63,4 @@
             .table__row
               .table__cell = l time.start_at, format: :short
               .table__cell = l time.end_at, format: :short if time.end_at
-              .table__cell = distance_of_time_in_words time.duration
+              .table__cell = number_to_timespan time.duration

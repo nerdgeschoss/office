@@ -28,4 +28,14 @@ module FormattingHelper
     path = "http://#{path}" unless path.start_with?("http")
     path
   end
+
+  def number_to_timespan(number)
+    number = number.to_f
+    hours = (number / 3600).floor
+    minutes = ((number - hours * 3600) / 60).floor
+    [
+      hours > 0 ? "#{hours}h" : nil,
+      minutes > 0 ? "#{minutes}min" : nil
+    ].compact.join(" ")
+  end
 end
