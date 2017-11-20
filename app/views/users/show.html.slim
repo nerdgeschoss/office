@@ -53,6 +53,7 @@
   - if policy(@user).show_presence? && @presence_month.present?
     = card Date::MONTHNAMES[@presence_month.month], variant: :table
       = column_chart @user.presence_times.by_day(@presence_month)
+      - times = @user.presence_times.in_month(@presence_month)
       .table
         .table__head
           .table__row
@@ -60,11 +61,17 @@
             .table__cell = PresenceTime.human_attribute_name :end_at
             .table__cell = PresenceTime.human_attribute_name :duration
         .table__body
-          - @user.presence_times.in_month(@presence_month).each do |time|
+          - times.each do |time|
             .table__row
               .table__cell = l time.start_at, format: :short
               .table__cell = l time.end_at, format: :short if time.end_at
               .table__cell = number_to_timespan time.duration
+              .table__body
+        .table__footer
+          .table__row
+            .table__cell
+            .table__cell
+            .table__cell = number_to_timespan times.sum(&:duration)
       .card__fake-footer
         nav.pagination
           a href=url_for(month: params[:month].to_i - 1) = icon :previous
