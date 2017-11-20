@@ -6,7 +6,9 @@ Rails.application.routes.draw do
     resources :invoices
   end
   resources :invoice_lines
-  resources :users
+  resources :users do
+    resources :presence_times, only: :index
+  end
   resources :devices
   resources :products
   resource :kiosk

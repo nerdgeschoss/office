@@ -51,7 +51,7 @@
                 - if policy(device).destroy?
                   = link_to icon(:trash), device, method: :delete
   - if policy(@user).show_presence? && @presence_month.present?
-    = card Date::MONTHNAMES[@presence_month.month], variant: :table
+    = card Date::MONTHNAMES[@presence_month.month], variant: :table, actions: [link_to(icon(:download), user_presence_times_path(@user, format: :csv))]
       = column_chart @user.presence_times.by_day(@presence_month)
       - times = @user.presence_times.in_month(@presence_month)
       .table
