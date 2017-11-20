@@ -5,4 +5,6 @@
 //= require turbolinks
 //= require flatpickr/dist/flatpickr
 //= require select2/dist/js/select2
+//= require Chart.bundle
+//= require chartkick
 //= require_tree ./application

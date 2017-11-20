@@ -105,6 +105,7 @@ GEM
       selenium-webdriver
     case_transform (0.2)
       activesupport
+    chartkick (2.2.5)
     childprocess (0.8.0)
       ffi (~> 1.0, >= 1.0.11)
     choice (0.2.0)
@@ -187,6 +188,8 @@ GEM
       railties (>= 3.0.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    groupdate (3.2.0)
+      activesupport (>= 3)
     guard (2.14.1)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
@@ -514,6 +517,7 @@ DEPENDENCIES
   capybara
   capybara-screenshot
   capybara-selenium
+  chartkick
   chromedriver-helper
   coffee-rails
   countries
@@ -528,6 +532,7 @@ DEPENDENCIES
   faker
   fakeredis
   friendly_id
+  groupdate
   guard-livereload
   guard-rspec
   http_accept_language

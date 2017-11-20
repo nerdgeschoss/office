@@ -33,6 +33,8 @@ gem "devise_invitable"
 gem "http_accept_language"
 gem "nested_form"
 gem "monogamy"
+gem "groupdate"
+gem "chartkick"
 
 # Seed Data
 gem "database_cleaner"

@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @presence_month = DateTime.current + params[:month].to_i.months
   end
 
   def update
