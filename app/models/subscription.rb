@@ -18,7 +18,7 @@ class Subscription < ApplicationRecord
   belongs_to :team
 
   scope :active, -> { where(canceled_at: nil) }
-  scope :due, -> { active.where("subscriptions.next_renewal_at < NOW()") }
+  scope :due, -> { active.where("subscriptions.next_renewal_at < NOW() AND subscriptions.canceled_at IS NULL") }
 
   enum interval: { monthly: 0 }
 
