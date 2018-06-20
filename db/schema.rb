@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171116171923) do
+ActiveRecord::Schema.define(version: 20180620095538) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "pgcrypto"
@@ -140,6 +141,8 @@ ActiveRecord::Schema.define(version: 20171116171923) do
     t.integer "invited_by_id"
     t.string "invited_by_type"
     t.string "roles", default: [], array: true
+    t.datetime "archived_at"
+    t.index ["archived_at"], name: "index_users_on_archived_at"
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["slug"], name: "index_users_on_slug", unique: true

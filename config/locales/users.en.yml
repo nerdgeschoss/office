@@ -2,6 +2,7 @@
 en:
   users:
     index:
+      archived_at: archived at %{time}
       invite_pending: Invite pending
       invite_user: Invite user
       users: Users

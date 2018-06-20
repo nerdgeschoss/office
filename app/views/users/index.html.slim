@@ -28,6 +28,8 @@
               small = user.team.name
               - if user.invite_pending?
                 div: small.muted = t ".invite_pending"
+              - if user.archived?
+                div: small.muted = t ".archived_at", time: l(user.archived_at.to_date)
             .table__cell = user.email
             .table__cell
               - if user.last_activity_at

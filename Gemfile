@@ -35,6 +35,7 @@ gem "nested_form"
 gem "monogamy"
 gem "groupdate"
 gem "chartkick"
+gem "time_for_a_boolean"
 
 # Seed Data
 gem "database_cleaner"

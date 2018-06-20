@@ -2,15 +2,15 @@
 .container
   = form_with url: kiosk_path do |f|
     = card :who_are_you
-      .line.line--left.line--wrap
+      .grid
         - @users.each do |user|
-          label.center for=user.id
+          label.user for=user.id
             = f.radio_button :user_id, user.id, id: user.id, required: true
             = avatar user, size: :small
             div = user.name
             small = user.team.name
     = card :kiosk
-      .line.line--wrap
+      .grid
         - @products.each do |product|
           label.product
             .product__price = number_to_currency product.price

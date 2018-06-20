@@ -1,0 +1,24 @@
+.user {
+  text-align: center;
+  
+  .avatar {
+    margin: 0 auto;
+  }
+
+  input {
+    display: none;
+
+    &:checked + .avatar::after {
+      display: block;
+      content: '✔';
+      line-height: 1;
+      font-size: 30px;
+      background-color: transparent;
+      border-color: transparent;
+      top: 0;
+      right: 0;
+      left: auto;
+      color: $color-tint;
+    }
+  }
+}

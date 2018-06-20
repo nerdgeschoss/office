@@ -7,6 +7,7 @@
       = f.password_field :password
       = f.password_field :password_confirmation
       - if policy(@user).destroy?
+        = f.check_box :archived
         = link_to t(".delete_user"), @user, method: :delete, class: "button button--link button--primary"
       = f.submit_line
 - @device ||= @user.devices.new
@@ -18,7 +19,7 @@
       = f.text_field :mac_address
       = f.check_box :track_time
       = f.submit_line
-= header @user.name, components: [link_to(@user.team.name, @user.team), mail_to(@user.email), edit_if(:edit_user, policy(@user).update?) ], aside: avatar(@user)
+= header @user.name + (@user.archived? ? " (archived)" : ""), components: [link_to(@user.team.name, @user.team), mail_to(@user.email), edit_if(:edit_user, policy(@user).update?) ], aside: avatar(@user)
 .container
   - if policy(@device).create?
     = card :devices, variant: :table, actions: [add_if(:create_device, true)]

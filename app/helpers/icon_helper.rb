@@ -4,7 +4,7 @@ module IconHelper
     url = nil
     url = resource.image.presence&.url if resource.is_a?(Product)
     url = resource.avatar_url if resource.is_a?(User)
-    status = resource.in_office? ? :online : :offline if resource.is_a?(User)
+    status = resource.in_office? ? :online : :offline if resource.is_a?(User) && resource.devices.any?
     return unless url
     tag.div(
       image_tag(url),

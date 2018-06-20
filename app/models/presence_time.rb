@@ -6,7 +6,7 @@
 #  start_at   :datetime         not null
 #  end_at     :datetime
 #  device_id  :uuid
-#  created_at :datetime         not nullPr
+#  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 

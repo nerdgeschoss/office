@@ -28,6 +28,7 @@
 #  invited_by_id          :integer
 #  invited_by_type        :string
 #  roles                  :string           default([]), is an Array
+#  archived_at            :datetime
 #
 
 FactoryBot.define do

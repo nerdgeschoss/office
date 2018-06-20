@@ -15,7 +15,6 @@ class AwesomeForm < ActionView::Helpers::FormBuilder
   end
 
   def password_field(method, options = {})
-    apply_validations method, options
     wrap method, super(method, options), "input--text", options
   end
 

@@ -28,11 +28,14 @@
 #  invited_by_id          :integer
 #  invited_by_type        :string
 #  roles                  :string           default([]), is an Array
+#  archived_at            :datetime
 #
 
 class User < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
+
+  time_for_a_boolean :archived
 
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :invitable
 
@@ -45,7 +48,7 @@ class User < ApplicationRecord
 
   scope :with_role, ->(role) { where "? = ANY(users.roles)", role.to_s }
   scope :without_role, ->(role) { where "users.roles = '{}' OR ? != ANY(users.roles)", role.to_s }
-  scope :visible_in_kiosk, -> { without_role :kiosk }
+  scope :visible_in_kiosk, -> { without_role(:kiosk).where(archived_at: nil) }
   scope :alphabetical, -> { order(first_name: :asc, last_name: :asc) }
   scope :in_office, -> { where id: Device.in_office.select(:user_id) }
 
