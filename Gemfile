@@ -56,7 +56,7 @@ gem "coffee-rails"
 # Services
 gem "newrelic_rpm"
 gem "airbrake"
-gem "aws-sdk", "< 3" # paperclip doesn't work with a newer sdk
+gem "aws-sdk-s3"
 
 group :test do
   gem "fakeredis"
