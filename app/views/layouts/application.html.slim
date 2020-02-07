@@ -4,7 +4,7 @@ html
   body class=("test" if Rails.env.test?) lang=I18n.locale
     input.modal__checkbox#async_modal type="checkbox"
     label.modal__blind for="async_modal"
-    .modal.modal--async#async_modal_container
+    .modal.modal--async: .container#async_modal_container
     - @page_modals&.values&.each do |modal|
       == modal
     .workspace

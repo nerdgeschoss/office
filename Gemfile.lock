@@ -433,7 +433,6 @@ GEM
       railties
     treetop (1.6.10)
       polyglot (~> 0.3)
-    turbo_react-rails (0.9.0)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -519,7 +518,6 @@ DEPENDENCIES
   spring-commands-rspec
   spring-watcher-listen
   time_for_a_boolean
-  turbo_react-rails
   turbolinks
   virtus (< 2)
   weasyprint

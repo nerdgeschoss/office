@@ -22,6 +22,7 @@ class Team < ApplicationRecord
   has_many :subscriptions, dependent: :destroy
 
   validates :name, presence: true
+  validates :name, uniqueness: true
 
   def open_invoice
     invoices.open.first_or_create
