@@ -1,3 +1,7 @@
+:queues:
+  - default
+  - mailers
+  - billing
 :schedule:
   perform_subscriptions:
     every: "1m"
