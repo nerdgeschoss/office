@@ -28,6 +28,10 @@ class ApplicationPolicy
     admin?
   end
 
+  def new?
+    create?
+  end
+
   class Scope
     attr_reader :user, :scope, :company
 

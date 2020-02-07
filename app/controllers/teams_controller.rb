@@ -1,29 +1,34 @@
 class TeamsController < ApplicationController
-  before_action :load_team, except: [:index, :create]
+  before_action :load_team, except: [:index, :new, :create]
 
   def index
-    @teams = policy_scope(Team)
+    @teams = policy_scope(Team).includes(:invoices, :payments, :users)
   end
 
   def show
   end
 
+  def new
+    @team = Team.new
+  end
+
   def create
     @team = authorize Team.new team_params
     if @team.save
-      redirect_to @team
+      navigate_to @team
     else
-      index
-      render :index
+      render_modal :new
     end
   end
 
+  def edit
+  end
+
   def update
-    @team.assign_attributes team_params
-    if @team.save
-      redirect_to @team
+    if @team.update team_params
+      close_modal
     else
-      render :show
+      render_modal :edit
     end
   end
 

@@ -30,4 +30,23 @@ module IconHelper
   def add_if(name, condition = true, icon: :add)
     content_tag "label", self.icon(icon), for: name if condition
   end
+
+  def link_to_add(url, icon: :add)
+    url = "javascript:asyncModal('#{url}')"
+    content_tag "a", self.icon(icon), href: url
+  end
+
+  def link_to_add_if(url, condition, icon: :add)
+    link_to_add(url, icon: icon) if condition
+  end
+
+  def link_to_edit(url, icon: :edit, size: :regular)
+    url = edit_polymorphic_path(url) unless url.is_a?(String)
+    url = "javascript:asyncModal('#{url}')"
+    content_tag "a", self.icon(icon, size: size), href: url
+  end
+
+  def link_to_edit_if(url, condition = policy(url).edit?, icon: :edit, size: :regular)
+    link_to_edit(url, icon: icon, size: size) if condition
+  end
 end

@@ -1,0 +1,6 @@
+closeModal();
+<% if @path %>
+Turbolinks.visit('<%= j @path %>');
+<% elsif @refresh %>
+Turbolinks.visit(document.location, { action: 'replace' });
+<% end %>

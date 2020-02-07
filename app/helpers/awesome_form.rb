@@ -108,7 +108,7 @@ class AwesomeForm < ActionView::Helpers::FormBuilder
     content_tag(:div,
       safe_join(
         [
-          content_tag(:label, t(cancel_title), for: cancel_id, class: "button button--link"),
+          content_tag(:a, t(cancel_title), href: "javascript:closeModal()", class: "button button--link"),
           submit(t(submit_title), class: "button--link button--primary")
         ]
       ),

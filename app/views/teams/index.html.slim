@@ -1,12 +1,6 @@
 - title Team.model_name.human count: 2
-- @team ||= Team.new
-= modal id: :add, show: @team.errors.any?
-  = card :create_team
-    = awesome_form_for @team do |f|
-      = f.text_field :name
-      = f.submit_line
 .container
-  = card :teams, variant: :table, actions:[add_if(:add, policy(Team).create?)]
+  = card :teams, variant: :table, actions:[link_to_add_if(new_team_path, policy(Team).create?)]
     .table
       .table__head
         .table__row
@@ -18,7 +12,7 @@
         - @teams.each do |team|
           a.table__row href=team_path(team)
             .table__cell.table__cell--slim: .stack
-              - team.users.without_role(:kiosk).each do |user|
+              - team.users.reject(&:kiosk?).each do |user|
                 = avatar user
             .table__cell = team.name
             - if policy(Team).financial_overview?

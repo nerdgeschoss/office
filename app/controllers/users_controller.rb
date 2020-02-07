@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
-  before_action :load_user, except: [:index, :create]
+  before_action :load_user, except: [:index, :new, :create]
+
+  def new
+    @user = User.new
+  end
 
   def index
     @users = policy_scope(User).without_role(:kiosk).alphabetical
@@ -9,12 +13,15 @@ class UsersController < ApplicationController
     @presence_month = DateTime.current + params[:month].to_i.months
   end
 
+  def edit
+  end
+
   def update
     @user.assign_attributes user_params
     if @user.save
-      redirect_to @user
+      close_modal
     else
-      render :show
+      render_modal :edit
     end
   end
 
@@ -22,16 +29,15 @@ class UsersController < ApplicationController
     @user = authorize User.new invite_params
     if @user.save
       @user.invite!(current_user)
-      redirect_to @user
+      navigate_to @user
     else
-      index
-      render :index
+      render_modal :new
     end
   end
 
   def destroy
     @user.destroy
-    redirect_to users_path
+    navigate_to users_path
   end
 
   private

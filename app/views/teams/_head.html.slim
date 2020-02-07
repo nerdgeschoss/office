@@ -1,10 +1,4 @@
 - title team.name
-- modal id: :edit_team, show: team.errors.any?
-  = card :edit_team
-    = awesome_form_for team do |f|
-      = f.text_field :name
-      = f.text_field :website
-      = f.submit_line
 - components = []
 - components.unshift link_to team.website, website_url(team.website), target: "new" if team.website.present?
 = header team.name, components: components
@@ -17,4 +11,4 @@
         = tab Invoice.model_name.human(count: 3), path: team_invoices_path(team)
     .tabs_group
       - if policy(team).edit?
-        .tabs__tab: label for=:edit_team = icon(:edit, size: :small)
+        .tabs__tab = link_to_edit(team, size: :small)

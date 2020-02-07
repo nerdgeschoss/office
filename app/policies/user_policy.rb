@@ -11,6 +11,10 @@ class UserPolicy < ApplicationPolicy
     admin? || resource == user
   end
 
+  def destroy?
+    super && resource != user
+  end
+
   class Scope < Scope
     def resolve
       scope.all

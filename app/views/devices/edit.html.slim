@@ -1,0 +1,7 @@
+= card :edit_device
+  = awesome_form_for @device do |f|
+    = f.hidden_field :user_id
+    = f.text_field :name
+    = f.text_field :mac_address
+    = f.check_box :track_time
+    = f.submit_line

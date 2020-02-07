@@ -1,8 +1,8 @@
 source "https://rubygems.org"
-ruby "2.4.2"
+ruby "2.6.3"
 
 # Core
-gem "rails", "~> 5.1"
+gem "rails", "6.0.2"
 gem "puma"
 
 # Database
@@ -37,11 +37,6 @@ gem "groupdate"
 gem "chartkick"
 gem "time_for_a_boolean"
 
-# Seed Data
-gem "database_cleaner"
-gem "factory_bot_rails"
-gem "faker"
-
 # Assets
 gem "sass-rails"
 gem "jquery-rails"
@@ -57,28 +52,6 @@ gem "coffee-rails"
 gem "newrelic_rpm"
 gem "airbrake"
 gem "aws-sdk-s3"
-
-group :test do
-  gem "fakeredis"
-  gem "db-query-matchers"
-  gem "rack_session_access"
-end
-
-group :development, :test do
-  gem "rspec-rails"
-  gem "rubocop-rspec-focused", require: false
-  gem "webmock", require: false
-  gem "timecop"
-  gem "rspec_junit_formatter"
-  gem "vcr"
-  gem "capybara"
-  gem "capybara-screenshot"
-  gem "capybara-selenium"
-  gem "chromedriver-helper"
-  gem "pry-byebug"
-  gem "pry-doc"
-  gem "pry-rails"
-end
 
 group :development do
   gem "listen"

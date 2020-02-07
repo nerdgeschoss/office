@@ -22,8 +22,10 @@ class Device < ApplicationRecord
   scope :running_tracker, -> { joins(:presence_times).where(presence_times: { end_at: nil }) }
   scope :tracking_time, -> { where(track_time: true) }
 
+  validates :name, presence: true
+
   def in_office?
-    last_activity_at > 2.minutes.ago
+    last_activity_at && last_activity_at > 2.minutes.ago
   end
 
   def track_activity

@@ -1,0 +1,10 @@
+= card :edit_user
+  = awesome_form_for @user do |f|
+    = f.text_field :first_name
+    = f.text_field :last_name
+    = f.password_field :password
+    = f.password_field :password_confirmation
+    - if policy(@user).destroy?
+      = f.check_box :archived
+      = link_to t(".delete_user"), @user, method: :delete, remote: true, class: "button button--link button--primary"
+    = f.submit_line

@@ -1,24 +1,30 @@
 class DevicesController < ApplicationController
-  before_action :load_device, except: [:index, :create]
+  before_action :load_device, except: [:index, :new, :create]
+
+  def new
+    @device = authorize Device.new user_id: current_user.id
+  end
 
   def create
-    @device = authorize Device.new device_params
+    @device = authorize Device.new device_params.merge(last_activity_at: DateTime.current)
     if @device.save
-      redirect_to @device.user
+      close_modal
     else
-      @user = User.find(device_params[:user_id])
-      render "users#show"
+      render_modal :new
     end
   end
 
   def update
-    @device.update! device_params
-    redirect_to @device.user
+    if @device.update device_params
+      close_modal
+    else
+      render_modal :edit
+    end
   end
 
   def destroy
     @device.destroy
-    redirect_to @device.user
+    refresh
   end
 
   private

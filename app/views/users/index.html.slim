@@ -1,16 +1,6 @@
 - title User.model_name.human count: 3
-- @user ||= User.new
-- modal id: :create_user, show: @user.errors.any?
-  = card :invite_user
-    = awesome_form_for @user do |f|
-      = f.collection_select :team_id, Team.all, :id, :name
-      .line
-        = f.text_field :first_name
-        = f.text_field :last_name
-      = f.text_field :email
-      = f.submit_line
 .container
-  = card :users, variant: :table, actions: [add_if(:create_user, policy(@user).create?)]
+  = card :users, variant: :table, actions: [link_to_add_if(new_user_path, policy(User).create?)]
     .table
       .table__head
         .table__row

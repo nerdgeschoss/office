@@ -6,7 +6,7 @@ module ComponentHelper
     end
     @page_modals ||= {}
     @page_modals[id] = capture do
-      render layout: "components/modal", locals: { id: id, checked: show } { content }
+      render(layout: "components/modal", locals: { id: id, checked: show }) { content }
     end
     @current_modal_id = nil
   end

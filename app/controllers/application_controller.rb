@@ -8,6 +8,27 @@ class ApplicationController < ActionController::Base
   before_action :redirect_kiosk
   force_ssl if: -> { Rails.env.production? }
 
+  def render_modal(action)
+    respond_to :js
+    render action, layout: "modal"
+  end
+
+  def navigate_to(path)
+    respond_to :js
+    @path = path.is_a?(String) ? path : polymorphic_path(path)
+    render :close_modal, layout: false
+  end
+
+  def close_modal(refresh_page: true)
+    respond_to :js
+    @refresh = refresh_page
+    render :close_modal, layout: false
+  end
+
+  def refresh
+    close_modal
+  end
+
   private
 
   def set_locale
@@ -24,6 +45,7 @@ class ApplicationController < ActionController::Base
   end
 
   def determine_layout
+    return false if request.xhr?
     return "authentication" if devise_controller?
     return "kiosk" if current_user&.kiosk?
     "application"

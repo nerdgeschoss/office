@@ -1,0 +1,8 @@
+= card :invite_user
+  = awesome_form_for @user do |f|
+    = f.collection_select :team_id, Team.all, :id, :name
+    .line
+      = f.text_field :first_name
+      = f.text_field :last_name
+    = f.text_field :email
+    = f.submit_line
