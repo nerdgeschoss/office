@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
 
   def new
     if current_user
-      redirect_to "/app/login?token=#{current_user.create_oauth_token}"
+      redirect_to ENV.fetch("APP_URL").sub(":token", current_user.create_oauth_token)
     else
       authenticate_user!
     end

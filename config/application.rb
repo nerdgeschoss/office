@@ -18,6 +18,8 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+Dotenv::Railtie.load
+
 module Office
   class Application < Rails::Application
     config.load_defaults 5.1
