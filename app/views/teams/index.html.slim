@@ -1,4 +1,5 @@
 - title Team.model_name.human count: 2
+- breadcrumbs teams: teams_path
 .container
   = card :teams, variant: :table, actions:[link_to_add_if(new_team_path, policy(Team).create?)]
     .table

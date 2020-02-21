@@ -13,9 +13,9 @@ html
         .menu = render "components/menu"
         .workspace__menu__trigger
       .workspace__content
-        = render "components/navbar"
         - if flash.any?
-          .container
+          .alert__container
             - flash.each do |key, value|
               .alert class="alert--#{key}" = value
+        = render "components/navbar"
         = yield

@@ -1,4 +1,5 @@
 - title @user.name
+- breadcrumbs users: users_path, @user.name => user_path(@user)
 = header @user.name + (@user.archived? ? " (archived)" : ""), components: [link_to(@user.team.name, @user.team), mail_to(@user.email), link_to_edit_if(@user) ], aside: avatar(@user)
 .container
   - if policy(Device).create?

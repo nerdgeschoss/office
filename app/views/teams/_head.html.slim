@@ -1,4 +1,5 @@
 - title team.name
+- breadcrumbs teams: teams_path, @team.name => team_path(@team)
 - components = []
 - components.unshift link_to team.website, website_url(team.website), target: "new" if team.website.present?
 = header team.name, components: components

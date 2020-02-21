@@ -1,0 +1,10 @@
+.alert {
+  &__container{
+    position: fixed;
+    right: 2rem;
+    top: 2rem;
+    left: auto;
+    max-width: 300px;
+    z-index: $z-activity;
+  }
+}

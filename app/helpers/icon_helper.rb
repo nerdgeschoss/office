@@ -19,25 +19,13 @@ module IconHelper
     image_tag "icons/#{name}.svg", options.merge(class: classes.join(" "))
   end
 
-  def edit_if(name, condition = true, icon: :edit)
-    if condition
-      content_tag "label", self.icon(icon), for: name
-    else
-      content_tag "label", self.icon(:lock)
-    end
-  end
-
-  def add_if(name, condition = true, icon: :add)
-    content_tag "label", self.icon(icon), for: name if condition
-  end
-
-  def link_to_add(url, icon: :add)
+  def link_to_add(url, icon: :add, size: :regular)
     url = "javascript:asyncModal('#{url}')"
-    content_tag "a", self.icon(icon), href: url
+    content_tag "a", self.icon(icon, size: size), href: url
   end
 
-  def link_to_add_if(url, condition, icon: :add)
-    link_to_add(url, icon: icon) if condition
+  def link_to_add_if(url, condition, icon: :add, size: :regular)
+    link_to_add(url, icon: icon, size: size) if condition
   end
 
   def link_to_edit(url, icon: :edit, size: :regular)

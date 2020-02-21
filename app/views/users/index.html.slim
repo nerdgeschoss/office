@@ -1,4 +1,5 @@
 - title User.model_name.human count: 3
+- breadcrumbs users: users_path
 .container
   = card :users, variant: :table, actions: [link_to_add_if(new_user_path, policy(User).create?)]
     .table
