@@ -7,7 +7,7 @@ class DoorJob < ApplicationJob
     door = Door.find door_id
     if door.buzzing?
       door.start_buzzing!
-      DoorJob.set(wait: 10).perform_later(door_id)
+      DoorJob.set(wait: 5).perform_later(door_id)
     else
       door.stop_buzzing!
     end
