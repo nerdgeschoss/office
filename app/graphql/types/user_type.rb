@@ -10,7 +10,7 @@ module Types
     field :name, String, null: false
     field :slug, String, null: false
     field :team, TeamType, null: false
-    field :in_office, Boolean, null: false
+    field :in_office, Boolean, null: false, method: :in_office?
     field :last_time_in_office, GraphQL::Types::ISO8601DateTime, null: true
     field :avatar_url, String, null: false
   end
