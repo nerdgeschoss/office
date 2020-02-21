@@ -6,7 +6,9 @@ module Types
       argument :id, String, required: true
     end
     def open_door(id:)
-      Door.find(id).tap(&:open!)
+      door = authorize Door.find(id), :open?
+      door.open!
+      door
     end
 
     field :logout, Boolean, null: true

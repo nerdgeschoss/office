@@ -8,8 +8,6 @@ class ApplicationPolicy
     @resource = resource
   end
 
-  delegate :admin?, :kiosk?, to: :user, allow_nil: true
-
   def show?
     admin?
   end
@@ -49,5 +47,13 @@ class ApplicationPolicy
     end
 
     delegate :team, :admin?, to: :user, allow_nil: true
+  end
+
+  protected
+
+  delegate :admin?, :kiosk?, to: :user, allow_nil: true
+
+  def logged_in?
+    !user.nil?
   end
 end
