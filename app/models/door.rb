@@ -48,7 +48,7 @@ class Door
   private
 
   def ensure_running_on_hardware
-    raise StandardError, "Cannot unbuzz the door, you're not running on hardware" unless Rails.config.raspi
+    raise StandardError, "Cannot unbuzz the door, you're not running on hardware" unless Rails.application.config.raspi
   end
 
   def redis_key

@@ -51,6 +51,7 @@ gem "lodash-rails"
 gem "rails-timeago"
 gem "i18n-tasks"
 gem "coffee-rails"
+gem "therubyracer"
 
 # Services
 gem "newrelic_rpm"
