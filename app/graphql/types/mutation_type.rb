@@ -9,6 +9,7 @@ module Types
 
     field :logout, Boolean, null: true
     def logout
+      warden.logout
       true
     end
 
@@ -16,7 +17,9 @@ module Types
       argument :token, String, required: true
     end
     def login_with_token(token:)
-      context[:current_user]
+      user = User.authenticate_with_token(token)
+      warden.set_user user if user
+      user
     end
   end
 end

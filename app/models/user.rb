@@ -29,6 +29,7 @@
 #  invited_by_type        :string
 #  roles                  :string           default([]), is an Array
 #  archived_at            :datetime
+#  oauth_token            :string
 #
 
 class User < ApplicationRecord
@@ -51,6 +52,14 @@ class User < ApplicationRecord
   scope :visible_in_kiosk, -> { without_role(:kiosk).where(archived_at: nil) }
   scope :alphabetical, -> { order(first_name: :asc, last_name: :asc) }
   scope :in_office, -> { where id: Device.in_office.select(:user_id) }
+
+  class << self
+    def authenticate_with_token(token)
+      user = User.find_by(oauth_token: token)
+      user&.update! oauth_token: nil
+      user
+    end
+  end
 
   def name
     [first_name, last_name].join(" ")

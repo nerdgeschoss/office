@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_20_095538) do
+ActiveRecord::Schema.define(version: 2020_02_21_123519) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -142,8 +142,10 @@ ActiveRecord::Schema.define(version: 2018_06_20_095538) do
     t.string "invited_by_type"
     t.string "roles", default: [], array: true
     t.datetime "archived_at"
+    t.string "oauth_token"
     t.index ["archived_at"], name: "index_users_on_archived_at"
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
+    t.index ["oauth_token"], name: "index_users_on_oauth_token", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["slug"], name: "index_users_on_slug", unique: true
   end
