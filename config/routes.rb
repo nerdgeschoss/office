@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  post "/graphql", to: "graphql#execute"
+  mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
   devise_for :users
   resources :teams do
     resources :subscriptions

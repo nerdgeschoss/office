@@ -175,6 +175,10 @@ GEM
       railties (>= 3.0.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    graphiql-rails (1.7.0)
+      railties
+      sprockets-rails
+    graphql (1.10.3)
     groupdate (4.3.0)
       activesupport (>= 5)
     guard (2.16.1)
@@ -294,6 +298,8 @@ GEM
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
+    pry-rails (0.3.9)
+      pry (>= 0.10.4)
     public_suffix (4.0.3)
     puma (4.3.1)
       nio4r (~> 2.0)
@@ -480,6 +486,8 @@ DEPENDENCIES
   dotenv-rails
   erd
   friendly_id
+  graphiql-rails
+  graphql
   groupdate
   guard-livereload
   guard-rspec
@@ -498,6 +506,7 @@ DEPENDENCIES
   paperclip
   pg
   pixelpress
+  pry-rails
   puma
   pundit!
   rack-cors
