@@ -51,7 +51,6 @@ gem "lodash-rails"
 gem "rails-timeago"
 gem "i18n-tasks"
 gem "coffee-rails"
-gem "mini_racer"
 
 # Services
 gem "newrelic_rpm"
@@ -74,4 +73,5 @@ group :development do
   gem "oink"
   gem "letter_opener"
   gem "rack-mini-profiler"
+  gem "therubyracer", "0.12.3"
 end
