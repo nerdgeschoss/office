@@ -32,7 +32,7 @@ class Door
 
   def open!
     redis.set(redis_key, "true", ex: 20)
-    DoorJob.perform_later
+    DoorJob.perform_later(id)
   end
 
   def start_buzzing!
