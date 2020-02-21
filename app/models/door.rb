@@ -37,12 +37,12 @@ class Door
 
   def start_buzzing!
     ensure_running_on_hardware
-    door_buzzer.turn_on!
+    door_buzzer.turn_off! # this seems to be inverted on the board
   end
 
   def stop_buzzing!
     ensure_running_on_hardware
-    door_buzzer.turn_off!
+    door_buzzer.turn_on! # this seems to be inverted on the board
   end
 
   private

@@ -6,7 +6,7 @@ require "sidekiq-scheduler/web"
 Rails.application.routes.draw do
   if Rails.env.production?
     Sidekiq::Web.use Rack::Auth::Basic do |username, password|
-      User.find_by(email: username)&.valid_passwort?(password)
+      User.find_by(email: username)&.valid_password?(password)
     end
   end
   mount Sidekiq::Web => "/sidekiq"
