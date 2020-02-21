@@ -7,9 +7,15 @@ class Door
       raise ActiveRecord::NotFound, "Door with id #{id} does not exist." unless ["front"].include?(id)
       Door.new(id: id)
     end
+
+    def redis
+      @redis ||= Redis.new
+    end
   end
 
   attr_reader :id
+
+  delegate :redis, to: :class
 
   def initialize(id:)
     @id = id
@@ -20,9 +26,10 @@ class Door
   end
 
   def buzzing?
-    false
+    @buzzing ||= redis.get(["door", id, "buzzing"].join(":")) == "true"
   end
 
   def open!
+    redis.set(["door", id, "buzzing"].join(":"), "true", ex: 20)
   end
 end
