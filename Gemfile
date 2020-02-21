@@ -42,7 +42,7 @@ gem "graphiql-rails"
 gem "bcrypt", "3.1.12" # newer version not supported on pi
 
 # Assets
-gem "sass-rails"
+gem "sass-rails", group: :assets
 gem "jquery-rails"
 gem "turbolinks"
 gem "autoprefixer-rails"
