@@ -17,6 +17,10 @@ Rails.application.routes.draw do
   resources :products
   resource :kiosk
 
+  resources :doors, only: [] do
+    post "open", on: :member
+  end
+
   namespace :api do
     namespace :hooks do
       post "online_devices", to: "devices#online"

@@ -1,8 +1,8 @@
 - title t(".today")
 - breadcrumbs dashboard: root_path
 = header t(".today")
-.container: .line.line--fill
-  = card :recent_purchases, variant: :table
+.container: .grid.grid--two-columns
+  = card :recent_purchases, variant: :table, class_name: "grid__double-height"
     .table.table--sticky-header
       .table__head
         .table__row
@@ -27,3 +27,9 @@
           = avatar user, size: :small
           div = user.name
           small = user.team.name
+  = card :door
+    - if @door.buzzing?
+      p = t(".door_is_open")
+    - else
+      = link_to t(".let_me_in"), open_door_path(id: :front), method: :post, remote: true, class: "button"
+

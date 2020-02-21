@@ -24,14 +24,14 @@ module ComponentHelper
     render "components/header", title: title, date: date, components: components, aside: aside
   end
 
-  def card(title = nil, actions: [], footer: nil, variant: nil, id: nil)
+  def card(title = nil, actions: [], footer: nil, variant: nil, id: nil, class_name: nil)
     if title&.is_a?(Symbol)
       id ||= "#{title}_card"
       title = t ".#{title}"
     end
     variant ||= :sheet if @current_modal_id
     content = capture { yield } if block_given?
-    render "components/card", title: title, actions: actions.compact, content: content, footer: footer, variant: variant, id: id
+    render "components/card", title: title, actions: actions.compact, content: content, footer: footer, variant: variant, id: id, class_name: class_name
   end
 
   def searchbox(name, anchor: nil, method: :get)
