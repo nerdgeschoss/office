@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PaymentsController < ApplicationController
   def create
     @team = Team.friendly.find(params[:team_id])

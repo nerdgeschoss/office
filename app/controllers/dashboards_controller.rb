@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DashboardsController < ApplicationController
   def show
     @recent_purchases = current_user.invoice_lines.today

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module MenuHelper
   def menu_item(item:, level: 0)
     if item.category?

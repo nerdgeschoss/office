@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Types
   class BaseObject < GraphQL::Schema::Object
     field_class Types::BaseField
@@ -7,7 +9,7 @@ module Types
     end
 
     def warden
-      context[:request].env['warden']
+      context[:request].env["warden"]
     end
   end
 end

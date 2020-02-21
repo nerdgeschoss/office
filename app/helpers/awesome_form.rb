@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AwesomeForm < ActionView::Helpers::FormBuilder
   include ::NestedForm::BuilderMixin
 
@@ -103,16 +105,15 @@ class AwesomeForm < ActionView::Helpers::FormBuilder
     super value, options
   end
 
-  def submit_line(submit_title = :save, cancel_id: nil, cancel_title: :cancel)
-    cancel_id ||= helper.instance_variable_get(:@current_modal_id)
+  def submit_line(submit_title = :save, cancel_title: :cancel)
     content_tag(:div,
-      safe_join(
-        [
-          content_tag(:a, t(cancel_title), href: "javascript:closeModal()", class: "button button--link"),
-          submit(t(submit_title), class: "button--link button--primary")
-        ]
-      ),
-      class: "line line--right card__fake-footer line--center")
+                safe_join(
+                  [
+                    content_tag(:a, t(cancel_title), href: "javascript:closeModal()", class: "button button--link"),
+                    submit(t(submit_title), class: "button--link button--primary")
+                  ]
+                ),
+                class: "line line--right card__fake-footer line--center")
   end
 
   def file_field(method, options = {})
@@ -152,7 +153,7 @@ class AwesomeForm < ActionView::Helpers::FormBuilder
     classes = Array.wrap(classes).compact
     if object&.errors&.[](method)&.any?
       classes << "input--error"
-      errors = safe_join object.errors[method].map { |e| content_tag :div, e, class: "input__error" }
+      errors = safe_join(object.errors[method].map { |e| content_tag :div, e, class: "input__error" })
     end
     classes << "input--no-label" if options[:label] == false
     classes << "input--inline" if options[:inline] == true
@@ -161,21 +162,21 @@ class AwesomeForm < ActionView::Helpers::FormBuilder
     inline_submit = submit("➡", class: "input__inline-submit") if options.delete(:inline_submit)
     if options[:tooltip].present?
       tooltip = content_tag(:div,
-        content_tag(:div, safe_join(options[:tooltip].to_s.split("\n"), tag(:br)), class: "input__tooltip__content"),
-        class: "input__tooltip")
+                            content_tag(:div, safe_join(options[:tooltip].to_s.split("\n"), tag(:br)), class: "input__tooltip__content"),
+                            class: "input__tooltip")
     end
     description = content_tag :div, description_for(method, options), class: "input__description"
     lines = [icon, content, label(options[:label] || method), inline_submit, tooltip, errors, description] + extra_lines
     content_tag(:div,
-      safe_join(lines.compact),
-      class: ["input"] + classes)
+                safe_join(lines.compact),
+                class: ["input"] + classes)
   end
 
   def description_for(method, options)
     options.delete(:description) || begin
       I18n.t([:activemodel, :attributes, form.class.name.underscore, [method, :description].join("_")].join("."), raise: true)
-    rescue
-      nil
+                                    rescue StandardError
+                                      nil
     end
   end
 

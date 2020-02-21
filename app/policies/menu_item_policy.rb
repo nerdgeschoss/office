@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MenuItemPolicy < ApplicationPolicy
   def show?
     send "#{resource.slug}?"

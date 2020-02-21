@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DevicePolicy < ApplicationPolicy
   def create?
     true

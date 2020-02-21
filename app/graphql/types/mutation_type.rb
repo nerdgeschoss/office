@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 module Types
   class MutationType < Types::BaseObject
     field :open_door, DoorType, null: true, description: "Open the specified door" do
       argument :id, String, required: true
     end
     def open_door(id:)
-      Door.find(id).tap { |door| door.open! }
+      Door.find(id).tap(&:open!)
     end
 
     field :logout, Boolean, null: true

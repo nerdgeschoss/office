@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -91,13 +93,13 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address:              "smtp.sendgrid.net",
-    port:                 587,
-    domain:               "heroku.com",
-    user_name:            ENV["SENDGRID_USERNAME"],
-    authentication:       "plain",
+    address: "smtp.sendgrid.net",
+    port: 587,
+    domain: "heroku.com",
+    user_name: ENV["SENDGRID_USERNAME"],
+    authentication: "plain",
     enable_starttls_auto: true,
-    password:             ENV["SENDGRID_PASSWORD"]
+    password: ENV["SENDGRID_PASSWORD"]
   }
 
   config.paperclip_defaults = {

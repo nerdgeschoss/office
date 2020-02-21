@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MenuItemBuilder
   attr_reader :scope
   def initialize(scope)
@@ -47,6 +49,7 @@ class MenuItem
   def self.restricted(scope)
     MenuItemBuilder.new(scope).build.map do |category|
       next nil unless Pundit.policy(scope, category).show?
+
       category.items&.map! { |e| Pundit.policy(scope, e).show? ? e : nil }&.compact!
       category
     end.compact

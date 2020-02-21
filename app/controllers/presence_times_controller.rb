@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PresenceTimesController < ApplicationController
   def index
     @user = authorize(User.friendly.find(params[:user_id]), :show_presence?)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: devices
@@ -35,6 +37,7 @@ class Device < ApplicationRecord
 
   def start_time_tracking
     return unless track_time? && presence_times.running.none?
+
     presence_times.create! start_at: DateTime.current
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationPolicy
   attr_reader :user, :resource
 
@@ -42,6 +44,7 @@ class ApplicationPolicy
 
     def resolve
       return scope.all if admin?
+
       scope.none
     end
 

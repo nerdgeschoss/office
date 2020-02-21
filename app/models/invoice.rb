@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: invoices
@@ -32,6 +34,7 @@ class Invoice < ApplicationRecord
 
   def close!
     return if invoiced? || total == 0
+
     Invoice.with_table_lock do
       invoice_number = team.generate_invoice_number? ? (Invoice.maximum(:invoice_number) || 1) + 1 : nil
       update! invoiced_at: DateTime.current, invoice_number: invoice_number

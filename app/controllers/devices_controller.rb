@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DevicesController < ApplicationController
   before_action :load_device, except: [:index, :new, :create]
 

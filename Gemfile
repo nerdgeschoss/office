@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source "https://rubygems.org"
 ruby "2.6.3"
 
@@ -38,6 +40,7 @@ gem "chartkick"
 gem "time_for_a_boolean"
 gem "graphql"
 gem "pry-rails"
+gem "graphiql-rails"
 
 # Assets
 gem "sass-rails"
@@ -72,5 +75,3 @@ group :development do
   gem "letter_opener"
   gem "rack-mini-profiler"
 end
-
-gem 'graphiql-rails', group: :development

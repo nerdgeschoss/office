@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ComponentHelper
   def modal(id:, show: false)
     @current_modal_id = id
@@ -34,10 +36,10 @@ module ComponentHelper
 
   def searchbox(name, anchor: nil, method: :get)
     content_tag(:div,
-      form_tag(url_for(anchor: anchor), method: method) do
-        search_field_tag(name, params[name])
-      end,
-      id: "searchBox")
+                form_tag(url_for(anchor: anchor), method: method) do
+                  search_field_tag(name, params[name])
+                end,
+                id: "searchBox")
   end
 
   def wizard_slide(name, active: false)

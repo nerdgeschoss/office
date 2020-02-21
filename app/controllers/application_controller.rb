@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   include Pundit
   protect_from_forgery with: :exception
@@ -36,6 +38,7 @@ class ApplicationController < ActionController::Base
 
   def default_url_options
     return { locale: params[:locale] } if params[:locale].present?
+
     {}
   end
 
@@ -47,6 +50,7 @@ class ApplicationController < ActionController::Base
     return false if request.xhr?
     return "authentication" if devise_controller?
     return "kiosk" if current_user&.kiosk?
+
     "application"
   end
 

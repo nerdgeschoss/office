@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class KioskPolicy < ApplicationPolicy
   def show?
     admin? || kiosk?

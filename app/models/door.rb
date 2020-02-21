@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Door
   class << self
     def find(id)

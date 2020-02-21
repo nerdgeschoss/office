@@ -1,10 +1,12 @@
 AllCops:
-  TargetRubyVersion: 2.3
+  TargetRubyVersion: 2.6.3
   DisplayCopNames: true
   DisplayStyleGuide: true
   Exclude:
-    - 'node_modules/**/*'
     - 'vendor/bundle/**/*'
+    - 'bin/**/*'
+    - 'db/schema.rb'
+    - 'node_modules/**/*'
 
 require:
   - rubocop/rspec/focused
@@ -12,37 +14,16 @@ require:
 Bundler/OrderedGems:
   Enabled: false
 
-Lint/AmbiguousBlockAssociation:
-  Enabled: false
-
-Lint/RescueWithoutErrorClass:
-  Enabled: false
-
-RSpec/Focused:
-  Enabled: true
-
-Rails:
-  Enabled: true
-
-Rails/NotNullColumn:
-  Enabled: false
-
-Rails/ReversibleMigration:
-  Enabled: false
-
-Rails/SkipsModelValidations:
-  Enabled: false
-
-Rails/HasAndBelongsToMany:
-  Enabled: false
-
-Layout/AlignParameters:
+Layout/ParameterAlignment:
   EnforcedStyle: with_fixed_indentation
 
-Style/ConditionalAssignment:
+Layout/FirstArrayElementIndentation:
+  EnforcedStyle: consistent
+
+Layout/LineLength:
   Enabled: false
 
-Style/DateTime:
+Style/ConditionalAssignment:
   Enabled: false
 
 Style/Documentation:
@@ -51,15 +32,6 @@ Style/Documentation:
 Style/EmptyMethod:
   EnforcedStyle: expanded
 
-Style/FrozenStringLiteralComment:
-  Enabled: false
-
-Style/Lambda:
-  Enabled: false
-
-Style/MethodMissing:
-  Enabled: false
-
 Style/MultilineBlockChain:
   Enabled: false
 
@@ -67,6 +39,9 @@ Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
 
 Style/NilComparison:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
   Enabled: false
 
 Style/NumericLiterals:
@@ -81,6 +56,18 @@ Style/WordArray:
 Style/SymbolArray:
   EnforcedStyle: brackets
 
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
+Style/RescueModifier:
+  Enabled: false
+
 Style/Lambda:
   EnforcedStyle: literal
 
@@ -90,7 +77,7 @@ Style/RegexpLiteral:
 Style/StringLiterals:
   EnforcedStyle: double_quotes
 
-Style/WordArray:
+Style/Alias:
   Enabled: false
 
 Metrics:

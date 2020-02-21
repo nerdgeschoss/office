@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreatePresenceTimes < ActiveRecord::Migration[5.1]
   def change
     create_table :presence_times, id: :uuid do |t|

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class InvoiceLinesController < ApplicationController
   def destroy
     line = authorize InvoiceLine.find(params[:id])

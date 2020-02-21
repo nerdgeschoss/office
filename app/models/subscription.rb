@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: subscriptions
@@ -38,6 +40,7 @@ class Subscription < ApplicationRecord
 
   def perform!
     return unless due?
+
     transaction do
       team.open_invoice.lines.create! product_id: product_id, quantity: quantity, created_at: next_renewal_at
       update! next_renewal_at: next_renewal_at + 1.month

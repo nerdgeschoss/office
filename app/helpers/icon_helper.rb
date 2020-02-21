@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module IconHelper
   def avatar(resource, size: nil)
     _ = size
@@ -6,6 +8,7 @@ module IconHelper
     url = resource.avatar_url if resource.is_a?(User)
     status = resource.in_office? ? :online : :offline if resource.is_a?(User) && resource.devices.any?
     return unless url
+
     tag.div(
       image_tag(url),
       class: "avatar avatar--#{size} avatar--#{status}"

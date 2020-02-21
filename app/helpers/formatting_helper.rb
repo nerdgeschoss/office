@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
 module FormattingHelper
   def parentheses(value)
     return "" unless value
+
     safe_join ["(", value, ")"]
   end
 

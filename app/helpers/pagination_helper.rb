@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PaginationHelper
   def paginate(scope, options = {})
     render "components/paginate", scope: scope, options: options
