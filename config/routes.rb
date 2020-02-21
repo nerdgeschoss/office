@@ -21,5 +21,7 @@ Rails.application.routes.draw do
     end
   end
 
+  get "app-login", to: "sessions#new"
+
   root "dashboards#show"
 end

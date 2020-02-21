@@ -61,6 +61,12 @@ class User < ApplicationRecord
     end
   end
 
+  def create_oauth_token
+    self.oauth_token = SecureRandom.hex
+    save!
+    oauth_token
+  end
+
   def name
     [first_name, last_name].join(" ")
   end
