@@ -10,11 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_21_123519) do
+ActiveRecord::Schema.define(version: 2020_02_21_152108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "activities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id"
+    t.string "subject_type"
+    t.uuid "subject_id"
+    t.string "record_type"
+    t.uuid "record_id"
+    t.string "type", null: false
+    t.string "action", null: false
+    t.jsonb "modifications", default: {}, null: false
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["action"], name: "index_activities_on_action"
+    t.index ["record_type", "record_id"], name: "index_activities_on_record_type_and_record_id"
+    t.index ["subject_type", "subject_id"], name: "index_activities_on_subject_type_and_subject_id"
+    t.index ["type"], name: "index_activities_on_type"
+    t.index ["user_id"], name: "index_activities_on_user_id"
+  end
 
   create_table "devices", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
@@ -150,6 +169,7 @@ ActiveRecord::Schema.define(version: 2020_02_21_123519) do
     t.index ["slug"], name: "index_users_on_slug", unique: true
   end
 
+  add_foreign_key "activities", "users"
   add_foreign_key "devices", "users"
   add_foreign_key "invoice_lines", "invoices"
   add_foreign_key "invoice_lines", "products"

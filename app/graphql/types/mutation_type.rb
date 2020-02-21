@@ -7,6 +7,7 @@ module Types
     end
     def open_door(id:)
       door = authorize Door.find(id), :open?
+      track_change :open_front_door
       door.open!
       door
     end

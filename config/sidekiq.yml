@@ -2,6 +2,7 @@
   - default
   - mailers
   - billing
+  - low_priority
 :schedule:
   perform_subscriptions:
     every: "1m"

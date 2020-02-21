@@ -9,6 +9,8 @@ class ApplicationController < ActionController::Base
   before_action :track_activity
   before_action :redirect_kiosk
 
+  protected
+
   def render_modal(action)
     respond_to :js
     render action, layout: "modal"
