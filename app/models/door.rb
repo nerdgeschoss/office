@@ -27,10 +27,35 @@ class Door
   end
 
   def buzzing?
-    @buzzing ||= redis.get(["door", id, "buzzing"].join(":")) == "true"
+    @buzzing ||= redis.get(redis_key) == "true"
   end
 
   def open!
-    redis.set(["door", id, "buzzing"].join(":"), "true", ex: 20)
+    redis.set(redis_key, "true", ex: 20)
+    DoorJob.perform_later
+  end
+
+  def start_buzzing!
+    ensure_running_on_hardware
+    door_buzzer.turn_on!
+  end
+
+  def stop_buzzing!
+    ensure_running_on_hardware
+    door_buzzer.turn_off!
+  end
+
+  private
+
+  def ensure_running_on_hardware
+    raise StandardError, "Cannot unbuzz the door, you're not running on hardware" unless Rails.config.raspi
+  end
+
+  def redis_key
+    @redis_key ||= ["door", id, "buzzing"].join(":")
+  end
+
+  def door_buzzer
+    @door_buzzer ||= GPIO::Led.new(17)
   end
 end

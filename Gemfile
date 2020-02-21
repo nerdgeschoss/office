@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 source "https://rubygems.org"
-ruby "2.6.3"
 
 # Core
 gem "rails", "6.0.2"
@@ -10,6 +9,9 @@ gem "puma"
 # Database
 gem "pg"
 gem "redis"
+
+# IOT
+gem "c_gpio", group: :development # prevent heroku from installing
 
 # Extensions
 gem "dotenv-rails"
@@ -20,27 +22,23 @@ gem "virtus", "< 2"
 gem "oj"
 gem "sidekiq"
 gem "sidekiq-scheduler"
-gem "pixelpress"
 gem "kaminari"
 gem "slim"
 gem "friendly_id"
-gem "weasyprint"
-gem "paperclip"
 gem "countries"
-gem "pundit", github: "elabs/pundit", branch: "master"
-gem "search_cop"
+gem "pundit"
 gem "document_serializable", "~> 0.2", git: "https://github.com/nerdgeschoss/document_serializable.git"
 gem "devise"
 gem "devise_invitable"
 gem "http_accept_language"
 gem "nested_form"
-gem "monogamy"
 gem "groupdate"
 gem "chartkick"
 gem "time_for_a_boolean"
 gem "graphql"
 gem "pry-rails"
 gem "graphiql-rails"
+gem "bcrypt", "3.1.12" # newer version not supported on pi
 
 # Assets
 gem "sass-rails"

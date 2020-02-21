@@ -113,6 +113,7 @@ GEM
     bcrypt (3.1.13)
     bindex (0.8.1)
     builder (3.2.4)
+    c_gpio (0.0.7)
     case_transform (0.2)
       activesupport
     chartkick (3.3.1)
@@ -479,6 +480,7 @@ DEPENDENCIES
   annotate
   autoprefixer-rails
   aws-sdk-s3
+  c_gpio
   chartkick
   coffee-rails
   countries
@@ -536,7 +538,7 @@ DEPENDENCIES
   webpacker
 
 RUBY VERSION
-   ruby 2.6.3p62
+   ruby 2.6.5p114
 
 BUNDLED WITH
    1.17.3

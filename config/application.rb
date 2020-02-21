@@ -33,5 +33,6 @@ module Office
 
     config.action_mailer.default_url_options = { host: ENV["HOST"] } if ENV["HOST"].present?
     config.action_mailer.default_url_options = { host: "#{ENV['HEROKU_APP_NAME']}.herokuapp.com" } if ENV["HEROKU_APP_NAME"].present?
+    config.raspi = ENV["RASPI"] == "true"
   end
 end
