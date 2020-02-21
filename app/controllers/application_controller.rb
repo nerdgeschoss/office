@@ -2,7 +2,7 @@
 
 class ApplicationController < ActionController::Base
   include Pundit
-  protect_from_forgery with: :exception
+  # protect_from_forgery with: :exception
   layout :determine_layout
   before_action :authenticate_user!
   before_action :set_locale
