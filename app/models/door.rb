@@ -27,7 +27,7 @@ class Door
   end
 
   def buzzing?
-    @buzzing ||= redis.get(redis_key) == "true"
+    redis.get(redis_key) == "true"
   end
 
   def open!
@@ -48,7 +48,7 @@ class Door
   private
 
   def ensure_running_on_hardware
-    raise StandardError, "Cannot unbuzz the door, you're not running on hardware" unless Rails.application.config.raspi
+    raise StandardError, "Cannot buzz the door, you're not running on hardware" unless Rails.application.config.raspi
   end
 
   def redis_key

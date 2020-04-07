@@ -5,11 +5,12 @@ class DoorJob < ApplicationJob
 
   def perform(door_id)
     door = Door.find door_id
-    if door.buzzing?
+    while door.buzzing?
       door.start_buzzing!
-      DoorJob.set(wait: 5).perform_later(door_id)
-    else
+      sleep 1
       door.stop_buzzing!
+      sleep 1
     end
+    door.stop_buzzing!
   end
 end
