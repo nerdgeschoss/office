@@ -1,24 +1,16 @@
-# README
+# nerdgeschoss Office App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## How to maintain the door sidekiq worker
 
-Things you may want to cover:
+This application contains a sidekiq runner that is supposed to work on a raspberry pi connected to
+the office door. This runner executes hardware commands on the GPIO to trigger the door buzzer.
 
-* Ruby version
+To update the worker, ssh into the pi, cd into the app's folder and execute
 
-* System dependencies
+```bash
+git pull
+cd ..
+./sidekiq
+```
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The sidekiq command will reload the config from heroku and then trigger systemd to reload the sidekiq process. To see if everything is working, check http://nerdgeschoss-office.herokuapp.com/sidekiq.
